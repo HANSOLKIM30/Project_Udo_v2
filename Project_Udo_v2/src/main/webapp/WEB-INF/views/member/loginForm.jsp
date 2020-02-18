@@ -6,9 +6,9 @@
 <html lang="ko">
 
 	<head>
-	<!-- 해더 시작 -->
-	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	<!-- 해더 끝 -->
+		<!-- 해더 시작 -->
+		<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+		<!-- 해더 끝 -->
 	</head>	
 	<body class="login-page sidebar-collapse">
 		<!-- 네비게이션 시작 -->
