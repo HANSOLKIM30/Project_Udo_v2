@@ -21,17 +21,17 @@ public class MemberRegisterService {
 
 	private MemberSessionDao dao;
 
-	// È¸¿ø°¡ÀÔ service
+	// member register service
 	public int registMember(HttpServletRequest request, MemberRegisterInfo regInfo) {
 	
 		dao = template.getMapper(MemberSessionDao.class);
 		
-		MemberInfo memberInfo = regInfo.toMemberInfo();	// MemberRegisterInfo ÇüÅÂ·Î ¹Ş¾Æ¿Í¼­ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåÇÒ ¼ö ÀÖµµ·Ï memberInfoÇüÅÂ·Î º¯Çü(uPhoto Á¦¿Ü) 
+		MemberInfo memberInfo = regInfo.toMemberInfo();	// MemberRegisterInfo typeìœ¼ë¡œ ë°›ì€ ê°ì²´ë¥¼  memberInfo typeì˜ ê°ì²´ë¡œ ë³€ê²½í•˜ì—¬ databaseì— ì €ì¥(uPhoto ì œì™¸: í•˜ë‹¨ì—ì„œ ì²˜ë¦¬) 
 		
 		
-		int resultCnt = 0;	//°á°ú°ª º¯¼ö: insert ¼º°ø ½Ã 1, ½ÇÆĞ ½Ã 0
+		int resultCnt = 0;	// insert ê²°ê³¼ ê°’ ë³€ìˆ˜: insert ì„±ê³µ ì‹œ 1, ì‹¤íŒ¨ ì‹œ 0
 		
-		// uPhoto ÀúÀå process
+		// uPhoto set process
 		String path = "/userImages";
 		String dir = request.getSession().getServletContext().getRealPath(path);
 		String newFileName = "";
@@ -39,17 +39,17 @@ public class MemberRegisterService {
 		try {
 			if(regInfo.getuPhoto() != null) {
 			
-				// °ãÄ¡Áö ¾Êµµ·Ï »õ·Î¿î ÆÄÀÏÀÌ¸§ »ı¼º
+				// userê°€ ì˜¬ë¦° image file nameì´ ì¤‘ë³µë˜ì§€ ì•Šë„ë¡ ìƒˆë¡œìš´ file name ì§€ì • 
 				newFileName = memberInfo.getuId() + System.nanoTime() + "";
 				
-				// ÆÄÀÏÀ» ¼­¹öÀÇ ÁöÁ¤ °æ·Î¿¡ ÀúÀå
+				// íŒŒì¼ì„ ì„œë²„ì˜ ì§€ì • ê²½ë¡œì— ì €ì¥
 				regInfo.getuPhoto().transferTo(new File(dir, newFileName));
 				
-				// µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ÀúÀåÇÏ±â À§ÇÑ ÆÄÀÏ ÀÌ¸§ set
+				// ë°ì´í„°ë² ì´ìŠ¤ ì €ì¥ì„ í•˜ê¸° ìœ„í•œ íŒŒì¼ì´ë¦„ set
 				memberInfo.setuPhoto(newFileName);			
 			}
 			
-			// memberInfo°´Ã¼¿¡¼­ uPhoto±îÁö setÇÏ¿´À¸¹Ç·Î daoÀÇ insert ½ÇÇà
+			// memberInfoì˜ uPhoto ë³€ìˆ˜ê¹Œì§€ setí•˜ì˜€ìœ¼ë¯€ë¡œ daoì—ì„œ insert ì‹¤í–‰
 			resultCnt = dao.insertMember(memberInfo);
 			
 		}  catch (IllegalStateException e) {

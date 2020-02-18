@@ -13,11 +13,11 @@ import com.wad.udo.member.domain.MemberInfo;
 public class MemberLoginService {
 
 	/*
-	 * ÀÎÁõ »óÅÂ¸¦ 3°³ »óÅÂ·Î ±¸ºĞ: return º¯°æ 
-	 * boolean -> int 
-	 * 0 - ·Î±×ÀÎ ½ÇÆĞ 
-	 * 1 - ¹ÌÀÎÁõ °èÁ¤
-	 * 2 - Á¤»ó ·Î±×ÀÎ
+	 * ìˆ˜ì • ë‚´ìš©  : ì¸ì¦ ìƒíƒœë¥¼ 3ê°œ ìƒíƒœë¡œ êµ¬ë¶„ 
+	 *  boolean -> int
+	 *  0 - ë¡œê·¸ì¸ ì‹¤íŒ¨
+	 *  1 - ë¯¸ì¸ì¦ ê³„ì • ë¡œê·¸ì¸	
+	 *  2 - ì •ìƒ ë¡œê·¸ì¸
 	 */
 
 	@Autowired
@@ -36,10 +36,10 @@ public class MemberLoginService {
 		memberInfo = dao.selectMemberById(id);
 
 		if (memberInfo != null && memberInfo.pwChk(pw)) {
-			// verify °ª Ã¼Å©
+			// verify ê°’ ì²´í¬
 			if(memberInfo.getVerify()=='Y') {
-				// ¼¼¼Ç¿¡ ÀúÀå(setAttribute)
-				// loginChk »óÅÂ°ªÀ» º¯°æ	
+				// ì„¸ì…˜ì— ì €ì¥(setAttribute)
+				// loginChk ìƒíƒœê°’ì„ ë³€ê²½
 				request.getSession(true).setAttribute("loginInfo", memberInfo.toLoginInfo());
 				loginChk = 2;
 			} else {

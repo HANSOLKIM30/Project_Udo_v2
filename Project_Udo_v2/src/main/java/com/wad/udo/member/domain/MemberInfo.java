@@ -19,7 +19,7 @@ public class MemberInfo {
 	private String code;
 	
 
-	// default »ı¼ºÀÚ ÇÊ¼ö
+	// default ìƒì„±ì
 	public MemberInfo() {
 		getRandonString();
 	}
@@ -43,7 +43,7 @@ public class MemberInfo {
 		getRandonString();	// code
 	}
 
-	// º¯¼öµéÀÇ Getter/Setter ½ÃÀÛ
+	// Getter/Setter ë©”ì„œë“œ ì‹œì‘
 	public int getIdx() {
 		return idx;
 	}
@@ -100,7 +100,7 @@ public class MemberInfo {
 		this.code = code;
 	}
 	
-	// µ¥ÀÌÅÍ È®ÀÎÀ» À§ÇÑ toString ¿À¹ö¶óÀÌµù
+	// ë°ì´í„° í™•ì¸ì„ ìœ„í•œ toString ì˜¤ë²„ë¼ì´ë”©
 	@Override
 	public String toString() {
 		
@@ -108,19 +108,19 @@ public class MemberInfo {
 	
 	}
 
-	// MemberInfo °´Ã¼ -> ¼¼¼Ç¿¡ ÀúÀåµÉ º¯¼ö·Î¸¸ ±¸¼ºµÈ LoginInfo °´Ã¼ ¹İÈ¯
+	// MemberInfo ê°ì²´ â†’ LoginInfo ê°ì²´ ë°˜í™˜
 	public LoginInfo toLoginInfo() {
 
 		return new LoginInfo(uId, uName, uPhoto);
 
 	}
 	
-	// ºñ¹Ğ¹øÈ£ Ã¼Å© È®ÀÎ
+	// ë¹„ë°€ë²ˆí˜¸ ì²´í¬ í™•ì¸
 	public boolean pwChk(String pw) {
 		return uPW != null && uPW.trim().length()>0 && uPW.equals(pw);
 	}
 	
-	// ¿µ¹®+¼ıÀÚ ³­¼ö ¹ß»ı
+	// ì˜ë¬¸+ìˆ«ì ë‚œìˆ˜ ë°œìƒ
 	public void getRandonString() {
 		Random r = new Random(System.nanoTime());
 		StringBuffer sb = new StringBuffer();
@@ -133,7 +133,7 @@ public class MemberInfo {
 			}
 		}
 		
-		System.out.println("³­¼ö ÄÚµå »ı¼º : " + sb);
+		System.out.println("ë‚œìˆ˜ ì½”ë“œ ìƒì„± : " + sb);
 
 		setCode(sb.toString());
 	}

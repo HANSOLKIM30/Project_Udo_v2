@@ -2,7 +2,7 @@ package com.wad.udo.member.domain;
 
 public class LoginInfo {
 	
-	// MemberInfo Áß session¿¡ ÀúÀåÇÒ º¯¼öµé 
+	// MemberInfoì˜ ë³€ìˆ˜ ì¤‘ login ê¸°ëŠ¥ì— í•„ìš”í•œ ë³€ìˆ˜ë¡œë§Œ êµ¬ì„±ëœ ê°ì²´ - sessionì— ì €ì¥
 	private String uId;
 	private String uName;
 	private String uPhoto;
