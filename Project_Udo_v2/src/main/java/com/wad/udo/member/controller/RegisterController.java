@@ -31,6 +31,8 @@ public class RegisterController {
 		
 		int resultCnt = 0;	//결과값에 대한 변수
 		
-		return new ResponseEntity<String>(code, HttpStatus.OK);
+		System.out.println("resultCnt::::::" + resultCnt);
+		
+		return new ResponseEntity<String>(resultCnt > 0 ? "success" : "fail", HttpStatus.OK);
 	}
 }
