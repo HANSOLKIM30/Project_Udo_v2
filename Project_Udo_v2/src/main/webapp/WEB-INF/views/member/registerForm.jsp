@@ -43,8 +43,10 @@
                                     </div>
                                     <div class="form-group">
                                        <label for="email" class="bmd-label-floating">ID...</label>
-                                        <input type="email" class="form-control" id="uId" name="uId">
-                                        <span class="bmd-help">필수입력 사항입니다.</span>
+                                       
+                                       <input type="email" class="form-control" id="uId" name="uId">
+                                       <input type="checkbox" id="idcheck" style="display: none;">
+                                       <span class="bmd-help">필수입력 사항입니다.</span>
                                     </div>
                                 </div>
                                 
@@ -119,6 +121,12 @@
 	<!-- 동작스크립트  -->
 	<script>
 		$(document).ready(function(){
+			
+			// 1. id 중복체크
+			$('#uId').focusout(function(){
+				
+			});
+			
 		});
 	</script>
 </body>
