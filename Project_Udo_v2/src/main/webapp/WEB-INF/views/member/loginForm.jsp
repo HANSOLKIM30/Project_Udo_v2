@@ -129,7 +129,7 @@
 					error: function(data){
 						console.log("에러::::::" + data);
 					}
-				})			
+				});			
 			}		
 		});
 	});
