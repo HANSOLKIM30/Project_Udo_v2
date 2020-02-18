@@ -28,8 +28,8 @@
 								<div class="card-body" style="margin-left: 20px">
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text"> <i
-												class="material-icons">person_outline</i>
+											<span class="input-group-text"> 
+												<i class="material-icons">person_outline</i>
 											</span>
 										</div>
 										<div  class="form-group">
@@ -39,13 +39,12 @@
 									</div>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text"> <i
-												class="material-icons">lock_outline</i>
+											<span class="input-group-text"> 
+												<i class="material-icons">lock_outline</i>
 											</span>
 										</div>
 										<div  class="form-group">
-											<input type="password" class="form-control"
-											placeholder="Password..." id="uPW" name="uPW">
+											<input type="password" class="form-control" placeholder="Password..." id="uPW" name="uPW">
 											<span class="bmd-help" id="pw-warning"></span>
 										</div>
 									</div>
@@ -64,7 +63,7 @@
 													<p class="text-primary" style="font-size: 11px"></p>
 												</li>
 												<li class="nav-item">
-													<a class="nav-link" href="#">
+													<a class="nav-link" href="<c:url value='/member/register' />">
 														<p class="text-primary" style="font-size: 11px">아직 계정이 없으신가요?</p>
 													</a>
 												</li>
