@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 필수 속성이다. : dao 식별하기 위한 이름 -->
+<mapper namespace="com.wad.udo.member.dao.MemberSessionDao">
+	
+	<!-- select 결과 메핑을 위한 resultMap 설정 -->
+	<resultMap id="resultMemberInfo"
+		type="com.wad.udo.member.domain.MemberInfo">
+		<id property="idx" column="idx" />
+		<result property="uId" column="uid" />
+		<result property="uPW" column="upw" />
+		<result property="uName" column="uname" />
+		<result property="uPhoto" column="uphoto" />
+		<result property="verify" column="verify" />
+		<result property="code" column="code" />
+	</resultMap>
+	
+	<!-- 회원로그인  -->
+	<select id="selectMemberById" resultMap="resultMemberInfo">
+		
+		select * from member where uid = #{uId}
+	
+	</select>
+	
+	<!-- 회원정보 수정을 위한 정보 획득  -->
+	<select id="selectMemberByIdx" resultMap="resultMemberInfo">
+
+		select * from member where idx = #{idx}
+
+	</select>
+	
+	<!-- 회원가입  -->
+	<insert id="insertMember" parameterType="com.wad.udo.member.domain.MemberInfo">
+	
+		insert into member (uid, upw, uname, uphoto, code) values (#{uId}, #{uPW}, #{uName}, #{uPhoto}, #{code})
+	
+	</insert>
+</mapper>
