@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 
+	<head>
 	<!-- 해더 시작 -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 	<!-- 해더 끝 -->
-	
+	</head>	
 	<body class="login-page sidebar-collapse">
 		<!-- 네비게이션 시작 -->
 		<%@ include file="/WEB-INF/views/frame/navigation.jsp"%>
@@ -25,7 +26,7 @@
 								<div class="card-header card-header-primary text-center">
 									<h4 class="card-title">Login</h4>
 								</div>
-								<div class="card-body" style="margin-left: 20px">
+								<div class="card-body" style="margin-left: 30px">
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"> 
