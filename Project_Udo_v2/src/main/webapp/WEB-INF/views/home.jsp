@@ -13,8 +13,8 @@
 	
 	    <title>다 함께 우도 한바퀴</title>
 	
-	    <link href="css/bootstrap.css" rel="stylesheet" />
-	    <link href="css/coming-sssoon.css" rel="stylesheet" />
+	    <link href="homeassets/css/bootstrap.css" rel="stylesheet" />
+	    <link href="homeassets/css/coming-sssoon.css" rel="stylesheet" />
 	
 	    <!--     Fonts     -->
 	    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
@@ -48,7 +48,7 @@
 	                </h1>
 	                <h4 class="motto" style="margin-bottom: -40px;">스쿠터를 타고 아름다운 우도의 경치를 느껴보세요</h4>
 	                <h5 class="info-text" style="text-align: center">
-	                	<a href="member/login" class="btn btn-primary btn-lg" style="color:white;border-">Login</a>
+	                	<a href="member/login" class="btn btn-primary btn-lg" style="color:white;border-">시작하기</a>
 	                </h5>
 	                <div class="subscribe">                  
 	                    <div class="row">
@@ -68,6 +68,6 @@
 	            </div>
 	        </div>
 	    </div>
-<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="homeassets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="homeassets/js/bootstrap.min.js" type="text/javascript"></script>
 </html>
