@@ -11,7 +11,8 @@
 		<!-- 해더 끝 -->
 		<style>
        		.input-group{
-            	margin: -15px; 
+       			margin-left: -12px;
+           	 	margin-bottom: 5px
         	}
     	</style>
 	</head>	
@@ -35,7 +36,7 @@
                             <div class="card-body" style="margin-left: 30px">
                                 
                                 <!--ID-->
-                                <div class="input-group" style="margin-top: 5px">
+								<div class="input-group" style="margin-top: 5px">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="material-icons">email</i>
@@ -43,10 +44,8 @@
                                     </div>
                                     <div class="form-group">
                                        <label for="email" class="bmd-label-floating">ID...</label>
-                                       
-                                       <input type="email" class="form-control" id="uId" name="uId">
-                                       <input type="checkbox" id="idcheck" style="display: none;">
-                                       <span class="bmd-help">필수입력 사항입니다.</span>
+                                        <input type="email" class="form-control" id="uId" name="uId">
+                                        <span class="bmd-help" id="idCheck">필수입력 사항입니다.</span> 
                                     </div>
                                 </div>
                                 
@@ -120,13 +119,36 @@
 	
 	<!-- 동작스크립트  -->
 	<script>
-		$(document).ready(function(){
-			
-			// 1. id 중복체크
+		$(document).ready(function(){		
+			// ** 1. id 중복체크
 			$('#uId').focusout(function(){
-				
-			});
-			
+				// id의 값을 selectById 기능 통해 변수로 받아오기
+				var uId = $('#uId').val();
+				// ajax를 통한 비동기 통신으로 uId 값이 데이터베이스에 존재하는지 확인
+				$.ajax({
+					url: "<c:url value='/member/checkId' />",
+					type: 'GET',
+					data: {
+						uId: uId
+					},
+					success: function(data){
+						console.log("id check 성공: " + data);
+						$('#idCheck').css("display","none");
+						$('#idCheck').html("");
+						if(data == "exist"){	// 입력한 id가 이미 존재할 경우
+							$('#idCheck').css("display","block");
+			                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\"> 사용중인 아이디입니다.</p>");
+			                $('#uId').focus();
+						} else{		// 존재하지 않을 경우
+							$('#idCheck').css("display","block");
+			                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #4CAF50;\">done</i><p style=\"font-size: 10px; color: #4CAF50; float: right\"> 사용가능한 멋진 아이디입니다.</p>");
+						}
+					},
+					error: function(data){
+						console.log("에러::::::" + data);
+					}						
+				});
+			});	
 		});
 	</script>
 </body>

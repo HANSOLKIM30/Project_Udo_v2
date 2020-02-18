@@ -61,7 +61,16 @@ public class MemberRegisterService {
 		}
 		
 		return resultCnt;
-
+	}
+	
+	//id check service
+	public char checkId(String uId) {
+		
+		dao = template.getMapper(MemberSessionDao.class);
+		
+		char idCheck = dao.selectMemberById(uId)!=null ? 'Y' :'N'; // id 유무 체크 변수 - Y: id 있음 / N: id 없음
+		
+		return idCheck;
 	}
 
 }
