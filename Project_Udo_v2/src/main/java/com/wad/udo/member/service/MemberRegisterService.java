@@ -2,6 +2,8 @@ package com.wad.udo.member.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -70,7 +72,42 @@ public class MemberRegisterService {
 		
 		char idCheck = dao.selectMemberById(uId)!=null ? 'Y' :'N'; // id 유무 체크 변수 - Y: id 있음 / N: id 없음
 		
+		// 이메일 양식인지 유효성 검사
+		// 이메일 유효성 검사를 위한 정규표현식
+		String regex = "^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+		// 정규표현식 컴파일
+		Pattern pattern = Pattern.compile(regex);
+		// 문자 매칭
+		Matcher matcher = pattern.matcher(uId);
+		// 정규표현식인지 체크
+		boolean isregx = matcher.find();
+		// 정규표현식에 적합한지 여부 확인 위해 콘솔에 출력
+		System.out.println("이메일 형태인가::::::" + isregx);
+		// 이메일 형태가 아닐 때		
+		if(isregx == false) {
+			idCheck = 'E';	// E: id가 이메일 형태가 아님 - 값 변경
+		}
+		
+		System.out.println("!!!!!!!!!!!!!!!" + idCheck);
 		return idCheck;
+	}
+	
+	// 비밀번호 유효성 검사 service
+	public boolean checkPW(String uPW) {
+		
+		boolean pwCheck;
+		
+		// 비밀번호 유효성 검사(1.비밀번호 8자리 이상 / 2.숫자 포함 / 3.특수문자 포함)
+		// 비밀번호 유효성 검사를 위한 정규표현식
+		String regex = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$";
+		// 정규표현식 컴파일
+		Pattern pattern = Pattern.compile(regex);
+		// 문자 매칭
+		Matcher matcher = pattern.matcher(uPW);
+		
+		pwCheck = matcher.find();
+
+		return pwCheck;
 	}
 
 }

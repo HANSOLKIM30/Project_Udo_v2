@@ -46,9 +46,10 @@ public class RegisterController {
 	public ResponseEntity<String> idCheck(@RequestParam("uId") String uId){
 		
 		String code = "";
-		char idCheck = regService.checkId(uId); // Y: id 있음 / N: id 없음
+		
+		char idCheck = regService.checkId(uId); // Y: id 있음 / N: id 없음 / E: 이메일 형식 아님
 	
-		System.out.println("loginChk(Y: id 있음 / N: id 없음)::::::" + idCheck);
+		System.out.println("idChk(Y: id 있음 / N: id 없음 / E: 이메일 형식 아님)::::::" + idCheck);
 		
 		switch(idCheck) {
 		case 'Y': 
@@ -57,9 +58,25 @@ public class RegisterController {
 		case 'N':
 			code = "notExist";
 			break;
+		case 'E':
+			code = "notEmail";
+			break;
 		}
 		
 		return new ResponseEntity<String>(code, HttpStatus.OK);
+	}
+	
+	// PW check controller
+	@RequestMapping(value = "member/checkPW", method = RequestMethod.GET)
+	public ResponseEntity<String> PWCheck(@RequestParam("uPW") String uPW){
+		
+		boolean pwCheck = regService.checkPW(uPW);
+		
+		// 정규표현식에 적합한지 여부 확인 위해 콘솔에 출력
+		System.out.println("비밀번호가 유효성검증을 통과했는가::::::" + pwCheck);
+				
+		// true: 유효성 검사 통과 / fail: 유효성 검사 통과하지 못함
+		return new ResponseEntity<String>(pwCheck==true?"success":"fail", HttpStatus.OK);
 	}
 	
 }
