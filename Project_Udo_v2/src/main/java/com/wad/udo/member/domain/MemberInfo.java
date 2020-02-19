@@ -11,6 +11,7 @@ public class MemberInfo {
 	@JsonIgnore
 	private String uPW;
 	private String uName;
+	private String uPhone;
 	private String uPhoto;
 
 	private char verify;
@@ -24,21 +25,23 @@ public class MemberInfo {
 		getRandonString();
 	}
 
-	public MemberInfo(String uId, String uPW, String uName, String uPhoto) {
+	public MemberInfo(String uId, String uPW, String uName, String uPhone, String uPhoto) {
 		super();
 		this.uId = uId;
 		this.uPW = uPW;
 		this.uName = uName;
+		this.uPhone = uPhone;
 		this.uPhoto = uPhoto;
 		getRandonString();	// code
 	}
 
-	public MemberInfo(int idx, String uId, String uPW, String uName, String uPhoto) {
+	public MemberInfo(int idx, String uId, String uPW, String uName, String uPhone, String uPhoto) {
 		super();
 		this.idx = idx;
 		this.uId = uId;
 		this.uPW = uPW;
 		this.uName = uName;
+		this.uPhone = uPhone;
 		this.uPhoto = uPhoto;
 		getRandonString();	// code
 	}
@@ -76,6 +79,14 @@ public class MemberInfo {
 		this.uName = uName;
 	}
 
+	public String getuPhone() {
+		return uPhone;
+	}
+
+	public void setuPhone(String uPhone) {
+		this.uPhone = uPhone;
+	}
+
 	public String getuPhoto() {
 		return uPhoto;
 	}
@@ -104,14 +115,14 @@ public class MemberInfo {
 	@Override
 	public String toString() {
 		
-		return "MemberInfo [idx=" + idx + ", uId=" + uId + ", uPW=" + uPW + ", uName=" + uName + ", uPhoto=" + uPhoto + "]";
+		return "MemberInfo [idx=" + idx + ", uId=" + uId + ", uPW=" + uPW + ", uName=" + uName  + ", uPhone=" + uPhone + ", uPhoto=" + uPhoto + "]";
 	
 	}
 
 	// MemberInfo 객체 → LoginInfo 객체 반환
 	public LoginInfo toLoginInfo() {
 
-		return new LoginInfo(uId, uName, uPhoto);
+		return new LoginInfo(uId, uName, uPhone, uPhoto);
 
 	}
 	

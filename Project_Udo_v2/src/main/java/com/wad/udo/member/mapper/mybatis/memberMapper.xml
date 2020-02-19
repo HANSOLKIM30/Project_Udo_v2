@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="uId" column="uid" />
 		<result property="uPW" column="upw" />
 		<result property="uName" column="uname" />
+		<result property="uPhone" column="uphone" />
 		<result property="uPhoto" column="uphoto" />
 		<result property="verify" column="verify" />
 		<result property="code" column="code" />
@@ -36,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원가입  -->
 	<insert id="insertMember" parameterType="com.wad.udo.member.domain.MemberInfo">
 	
-		insert into member (uid, upw, uname, uphoto, code) values (#{uId}, #{uPW}, #{uName}, #{uPhoto}, #{code})
+		insert into member (uid, upw, uname, uphone, uphoto, code) values (#{uId}, #{uPW}, #{uName}, #{uPhone}, #{uPhoto}, #{code})
 	
 	</insert>
 </mapper>

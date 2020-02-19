@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 ml-auto mr-auto" id="userPage">
                     <div class="card">
-                        <form class="form" method="post" id="registerForm" enctype="multipart/form-data">
+                        <form class="form" method="post" id="registerForm" enctype="multipart/form-data" onsubmit="return false">
                             <div class="card-header card-header-primary text-center">
                                 <h4 class="card-title">SIGN UP</h4>
                             </div>
@@ -90,6 +90,20 @@
                                     </div>
                                 </div>
                                 
+                                <!--Phone-->
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">phone</i>
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="bmd-label-floating">Phone...</label>
+                                        <input type="text" class="form-control" name="uPhone">
+                                        <span class="bmd-help">필수입력 사항입니다.</span>
+                                    </div>
+                                </div>
+                                
                                 <!--Photo-->
                                 <div class="row" style="margin-top: 25px">
                                     <div class="col-md-2">
@@ -136,11 +150,15 @@
 						$('#idCheck').css("display","none");
 						$('#idCheck').html("");
 						if(data == "exist"){	// 입력한 id가 이미 존재할 경우
+							// span block 처리
 							$('#idCheck').css("display","block");
+							// span 문구 및 css 재설정
 			                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\"> 사용중인 아이디입니다.</p>");
 			                $('#uId').focus();
 						} else{		// 존재하지 않을 경우
+							// span block 처리
 							$('#idCheck').css("display","block");
+							// span 문구 및 css 재설정
 			                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #4CAF50;\">done</i><p style=\"font-size: 10px; color: #4CAF50; float: right\"> 사용가능한 멋진 아이디입니다.</p>");
 						}
 					},
@@ -148,7 +166,30 @@
 						console.log("에러::::::" + data);
 					}						
 				});
-			});	
+			});
+			// ** 2. 비밀번호 유효성 검사
+			$('#uPW').focusout(function(){
+				var uPW = $('#uPW').val();
+			});
+			
+			// ** 3. confirm PW 
+			$('#confrim_uPW').focusout(function(){
+				var uPW = $('#uPW').val();
+				var confrim_uPW = $('#confrim_uPW').val();
+				
+				if(uPW==confrim_uPW){	// 비밀번호 확인 시 일치하지 않을 경우
+					
+				}else{	// 비밀번호 확인 시 일치할 경우
+					$('#confrim_uPW').focus();	
+				}
+			});
+			
+			// ** form 전송
+			$('#registerForm').submit(function(){
+				var uId = $('#uId').val();
+				var uPW = $('#uPW').val();
+				var confrim_uPW = $('#confrim_uPW').val();
+			});
 		});
 	</script>
 </body>
