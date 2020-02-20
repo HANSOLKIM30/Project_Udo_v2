@@ -11,19 +11,20 @@
 		<!-- 해더 끝 -->
 		<style>
        		.input-group{
-       			margin-left: -12px;
+       			margin-left: -15px;
        			margin-top: 10px;
         	}
     	</style>
 	</head>	
 	<body class="login-page sidebar-collapse">
+		<!-- 네비게이션 시작  -->
 		<%@ include file="/WEB-INF/views/frame/navigation.jsp"%>
+		<!-- 네비게이션 끝 -->
 		<br>
 		<br>
 		<br>
 		<br>
 		<br>
-
 		<div class="page-header header-filter" style="background-image: url('../assets/img/udo1.jpg'); background-size: cover; background-position: top center;">
 		  <div class="container">
             <div class="row">

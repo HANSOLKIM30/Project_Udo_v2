@@ -16,7 +16,7 @@
 			<ul class="nav nav-pills nav-pills-primary ml-auto">
 				<li class="nav-item">
 					<a class="nav-link" href="<c:url value='/member/login' />"> 
-						<i class="material-icons">face</i> Profile
+						<i class="material-icons">face</i> My Page
 					</a>
 				</li>
 				<li class="nav-item">

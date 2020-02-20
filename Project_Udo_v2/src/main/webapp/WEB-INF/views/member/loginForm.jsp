@@ -11,7 +11,10 @@
 		<!-- 해더 끝 -->
 	</head>	
 	<body class="login-page sidebar-collapse">
+		<!-- 네비게이션 시작  -->
 		<%@ include file="/WEB-INF/views/frame/navigation.jsp"%>
+		<!-- 네비게이션 끝 -->
+		<br>
 		<br>
 		<br>
 		<br>
@@ -57,13 +60,13 @@
                                 	</div>
 								</div>
 								<div class="card-footer">
-                                <div class="col-md-6">
-                                    <a class="text-primary" href="#" style="font-size: 10px">계정을 분실하셨나요?</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a class="text-primary" href="#" style="font-size: 10px">아직 계정이 없으신가요?</a>
-                                </div>
-                            </div>
+                               		<div class="col-md-6 text-center">
+                                    	<a class="text-primary" href="#" style="font-size: 10px">계정을 분실하셨나요?</a>
+                                	</div>
+                                	<div class="col-md-6 text-center">
+                                	    <a class="text-primary" href="<c:url value='/member/register' />" style="font-size: 10px">아직 계정이 없으신가요?</a>
+                                	</div>
+                            	</div>
 							</form>
 						</div>
 					</div>
