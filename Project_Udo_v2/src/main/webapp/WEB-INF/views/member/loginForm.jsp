@@ -11,9 +11,8 @@
 		<!-- 해더 끝 -->
 	</head>	
 	<body class="login-page sidebar-collapse">
-		<!-- 네비게이션 시작 -->
 		<%@ include file="/WEB-INF/views/frame/navigation.jsp"%>
-		<!-- 네비게이션 끝  -->
+		<br>
 		<br>
 		<br>
 		<div class="page-header header-filter"

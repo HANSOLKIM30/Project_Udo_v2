@@ -15,8 +15,6 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <!-- CSS Files -->
 <link href="../assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="../assets/demo/demo.css" rel="stylesheet" />
 <!--     Fonts     -->
 <link
 	href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css"

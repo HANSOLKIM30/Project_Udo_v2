@@ -70,7 +70,7 @@ public class MemberRegisterService {
 		
 		dao = template.getMapper(MemberSessionDao.class);
 		
-		char idCheck = dao.selectMemberById(uId)!=null ? 'Y' :'N'; // id 유무 체크 변수 - Y: id 있음 / N: id 없음
+		char idCheck = dao.selectMemberById(uId)!=null ? 'Y' :'N'; // id 유무 체크 - Y: id 있음 / N: id 없음
 		
 		// 이메일 양식인지 유효성 검사
 		// 이메일 유효성 검사를 위한 정규표현식
@@ -88,7 +88,6 @@ public class MemberRegisterService {
 			idCheck = 'E';	// E: id가 이메일 형태가 아님 - 값 변경
 		}
 		
-		System.out.println("!!!!!!!!!!!!!!!" + idCheck);
 		return idCheck;
 	}
 	
@@ -108,6 +107,32 @@ public class MemberRegisterService {
 		pwCheck = matcher.find();
 
 		return pwCheck;
+	}
+	
+	//phone check service
+	public char checkPhone(String uPhone) {
+		
+		dao = template.getMapper(MemberSessionDao.class);
+		
+		char phoneCheck = dao.selectMemberByPhone(uPhone)!=null ? 'Y' : 'N';	// phone 유무 체크 - Y: phone 있음 / N: phone 없음
+		
+		// 핸드폰번호 양식인지 유효성 검사
+		// 핸드폰번호 유효성 검사를 위한 정규표현식
+		String regex = "^01[016789]\\d{3,4}\\d{4}$";
+		// 정규표현식 컴파일
+		Pattern pattern = Pattern.compile(regex);
+		// 문자 매칭
+		Matcher matcher = pattern.matcher(uPhone);
+		// 정규표현식인지 체크
+		boolean isregx = matcher.find();
+		// 정규표현식에 적합한지 여부 확인 위해 콘솔에 출력
+		System.out.println("핸드폰번호 형태인가::::::" + isregx);
+		
+		if(isregx == false) {
+			phoneCheck = 'P';	//핸드폰번호 양식이 아니라면 P를 반환하고 메서드 종료
+		}	
+		
+		return phoneCheck;		
 	}
 
 }

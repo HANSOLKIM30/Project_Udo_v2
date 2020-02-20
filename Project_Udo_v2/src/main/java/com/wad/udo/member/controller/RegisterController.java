@@ -36,6 +36,8 @@ public class RegisterController {
 		
 		int resultCnt = 0;	//결과값에 대한 변수
 		
+		resultCnt = regService.registMember(request, regInfo);
+		
 		System.out.println("resultCnt::::::" + resultCnt);
 		
 		return new ResponseEntity<String>(resultCnt > 0 ? "success" : "fail", HttpStatus.OK);
@@ -77,6 +79,31 @@ public class RegisterController {
 				
 		// true: 유효성 검사 통과 / fail: 유효성 검사 통과하지 못함
 		return new ResponseEntity<String>(pwCheck==true?"success":"fail", HttpStatus.OK);
+	}
+	
+	// phone check controller
+	@RequestMapping(value = "member/checkPhone", method=RequestMethod.GET)
+	public ResponseEntity<String> phoneCheck(@RequestParam("uPhone") String uPhone){
+		
+		String code = "";
+		
+		char phoneCheck = regService.checkPhone(uPhone); // Y: id 있음 / N: id 없음 / E: 이메일 형식 아님
+		
+		System.out.println("phoneChk(Y: 폰번호 있음 / N: 폰번호 없음 / P: 핸드폰번호 형식 아님)::::::" + phoneCheck);
+		
+		switch(phoneCheck) {
+		case 'Y': 
+			code = "exist";
+			break;
+		case 'N':
+			code = "notExist";
+			break;
+		case 'P':
+			code = "notPhone";
+			break;
+		}
+		
+		return new ResponseEntity<String>(code, HttpStatus.OK);
 	}
 	
 }

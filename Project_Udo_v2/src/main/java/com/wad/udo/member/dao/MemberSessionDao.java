@@ -9,5 +9,7 @@ public interface MemberSessionDao {
 	public MemberInfo selectMemberByIdx(int idx);
 	
 	public int insertMember(MemberInfo memberInfo);
+	
+	public MemberInfo selectMemberByPhone(String uPhone);
 
 }
