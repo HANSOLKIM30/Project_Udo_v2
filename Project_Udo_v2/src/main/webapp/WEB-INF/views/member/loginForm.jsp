@@ -48,29 +48,18 @@
 											<span class="bmd-help" id="pw-warning"></span>
 										</div>
 									</div>
+									<div class="text-center">
+                                    <input type="submit" class="btn btn-primary btn-link btn-lg" value="LOGIN">
+                                	</div>
 								</div>
-								<div class="text-center">
-									<input type="submit" class="btn btn-primary btn-link btn-lg" value="LOGIN">									
-									<div class="nav-tabs">
-										<div class="nav-tabs-wrapper">
-											<ul class="nav nav-tabs" data-tabs="tabs">
-												<li class="nav-item">
-													<a class="nav-link" href="#">
-														<p class="text-primary" style="font-size: 11px">계정을 분실하셨나요?</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<p class="text-primary" style="font-size: 11px"></p>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link" href="<c:url value='/member/register' />">
-														<p class="text-primary" style="font-size: 11px">아직 계정이 없으신가요?</p>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
+								<div class="card-footer">
+                                <div class="col-md-6">
+                                    <a class="text-primary" href="#" style="font-size: 10px">계정을 분실하셨나요?</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="text-primary" href="#" style="font-size: 10px">아직 계정이 없으신가요?</a>
+                                </div>
+                            </div>
 							</form>
 						</div>
 					</div>
