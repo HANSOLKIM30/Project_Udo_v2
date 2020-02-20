@@ -25,31 +25,35 @@
 								<div class="card-header card-header-primary text-center">
 									<h4 class="card-title">Login</h4>
 								</div>
-								<div class="card-body" style="margin-left: 30px">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"> 
-												<i class="material-icons">person_outline</i>
-											</span>
-										</div>
-										<div  class="form-group">
-											<input type="email" class="form-control" placeholder="ID..." id="uId" name="uId">
-											<span class="bmd-help" id="id-warning"></span>
-										</div>
-									</div>
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"> 
-												<i class="material-icons">lock_outline</i>
-											</span>
-										</div>
-										<div  class="form-group">
-											<input type="password" class="form-control" placeholder="Password..." id="uPW" name="uPW">
-											<span class="bmd-help" id="pw-warning"></span>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-10 col-md-6 ml-auto mr-auto">
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text"> 
+														<i class="material-icons">person_outline</i>
+													</span>
+												</div>
+												<div class="form-group">
+												<input type="text" class="form-control" placeholder="ID..." id="uId" name="uId">
+												<span class="bmd-help" id="id-warning"></span>
+												</div>
+											</div>
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text"> 
+														<i class="material-icons">lock_outline</i>
+													</span>
+												</div>
+												<div  class="form-group">
+													<input type="password" class="form-control" placeholder="Password..." id="uPW" name="uPW">
+													<span class="bmd-help" id="pw-warning"></span>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="text-center">
-                                    <input type="submit" class="btn btn-primary btn-link btn-lg" value="LOGIN">
+                                    	<input type="submit" class="btn btn-primary btn-link btn-lg" value="LOGIN">
                                 	</div>
 								</div>
 								<div class="card-footer">
