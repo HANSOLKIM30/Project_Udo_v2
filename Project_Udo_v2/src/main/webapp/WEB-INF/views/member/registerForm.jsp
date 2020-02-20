@@ -332,7 +332,7 @@
 					$('#phoneCheck').css("display","block");
 					$('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
 					$('#uPhone').focus();
-				} else if(!$('#idCheckBox_validate').prop('checked') || !$('#idCheckBox_overlap').prop('checked')){	// id 유효성 검사 실패
+				} else if(!$('#idCheckBox_validate').prop('checked') || !$('#idCheckBox_overlap').prop('checked')){	// id 유효성 검사 실패 및 형식 검사 실패
 					$('#idCheck').css("display","block");
 	                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp아이디를 다시 입력해주세요.</p>");
 					$('#uId').focus();
@@ -344,7 +344,7 @@
 					$('#confirmPWCheck').css("display","block");
 					$('#confirmPWCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp비밀번호가 일치하지 않습니다.</p>");
 					$('#confirm_uPW').focus();
-				} else if(!$('#phoneCheckBox_validate').prop('checked') || !$('#phoneCheckBox_overlap').prop('checked')){	// phone 유효성 검사 실패
+				} else if(!$('#phoneCheckBox_validate').prop('checked') || !$('#phoneCheckBox_overlap').prop('checked')){	// phone 유효성 검사 실패 및 형식 검사 실패
 					$('#phoneCheck').css("display","block");
 	                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">반호를 다시 입력해주세요.</p>");
 					$('#uPhone').focus();
