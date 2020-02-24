@@ -28,6 +28,9 @@ public class MemberRegisterService {
 	@Autowired
 	private AES256Util aesUtil;
 	
+	@Autowired
+	private MailSenderService mailService;
+	
 	private MemberSessionDao dao;
 
 	// member register service
@@ -73,6 +76,9 @@ public class MemberRegisterService {
 		
 		// memberInfo의 uPhoto, uPW 변수까지 set하였으므로 dao에서 insert 실행
 		resultCnt = dao.insertMember(memberInfo);
+		
+		// 인증 이메일 발송
+		mailService.sendVerifyMail(request, memberInfo.getuId(), memberInfo.getCode());
 		
 		return resultCnt;
 	}

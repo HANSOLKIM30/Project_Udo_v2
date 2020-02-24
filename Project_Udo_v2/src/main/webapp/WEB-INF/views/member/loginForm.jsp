@@ -113,12 +113,13 @@
 							$('#uPW').val("");
 							$('#id-warning').html("");
 							$('#pw-warning').html("");
-						} else if(data == 'unverified'){
-							alert("이메일 미인증 사용자 입니다.");
+						} else if(data == 'unverified'){					
 							//******이메일 미인증 사용자 창으로 이동******
+							location.href = "<c:url value='/member/unVerified' />";
 						} else{
-							alert('성공');
+							member/myPage;
 							//******mypage로 이동******
+							location.href = "<c:url value='/member/myPage' />";
 						}
 					},
 					error: function(data){

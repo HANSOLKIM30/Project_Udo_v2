@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-expand-lg" id="sectionsNav">
 	<div class="container">
 		<div class="navbar-translate">
-			<a class="navbar-brand" href="#"> 
+			<a class="navbar-brand" href="/udo"> 
 				<i class='fas fa-water fa-2x'>
 					<p style="text-align: center">UDO</p>
 				</i>

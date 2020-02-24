@@ -11,5 +11,7 @@ public interface MemberSessionDao {
 	public int insertMember(MemberInfo memberInfo);
 	
 	public MemberInfo selectMemberByPhone(String uPhone);
+	
+	public int updateVerify(String uId, String code);
 
 }

@@ -371,7 +371,8 @@
 						success: function(data){
 							console.log("submit 성공: " + data);
 							if(data == "success"){
-								alert("성공성공");
+								alert("회원가입이 완료되었습니다. 이메일 인증 후 이용하시기 바랍니다.");
+								location.href = "<c:url value='/member/login' />"
 								/* myPage 이동 */
 							}else{
 								alert("회원가입에 실패하였습니다. 관리자에게 문의바랍니다.");
