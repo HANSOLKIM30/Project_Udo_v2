@@ -1,6 +1,10 @@
 package com.wad.udo.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +30,26 @@ public class VerifyController {
 	}
 	
 	// 이메일 미인증 회원 로그인 시 페이지 반환
-	@RequestMapping(value = "member/unVerified")
+	@RequestMapping(value = "member/unVerified", method =RequestMethod.GET)
 	public String notVerified() {
 		return "/member/unVerified"; 
 	}
 	
+	// 인증 이메일 재발송
+	@RequestMapping(value = "member/reVerify", method = RequestMethod.POST)
+	public ResponseEntity<String> reVerify(HttpServletRequest request, @RequestParam("uId") String uId) {
+		
+		int result = service.reSendVerifyMail(request, uId);
+		
+		String str = "";
+		
+		if(result > 0) {
+			str = "success";
+		}else {
+			str = "fail";
+		}
+		System.out.println("resend Verify Mail::::::" + str);
+		
+		return new ResponseEntity<String>(str, HttpStatus.OK);
+	}	
 }

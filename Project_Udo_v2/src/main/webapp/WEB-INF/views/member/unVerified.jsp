@@ -23,12 +23,31 @@
 	                <a href="<c:url value='/member/login' />">로그인 하기</a>
             	</div>
 	            <div style="padding: 20px;">
-	                <h6>이메일을 받지 못하셨나요?&nbsp;&nbsp;<a href=#>다시 이메일 받기</a></h6>
+	                <h6>이메일을 받지 못하셨나요?&nbsp;&nbsp;<a href="#" id="resendMail">인증 이메일 다시 받기</a></h6>
 	            </div>
 	        </div>
 	    </div>
 		<!-- 푸터 시작 -->
 		<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-		<!-- 푸터 끝  -->	
+		<!-- 푸터 끝  -->
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#resendMail').click(function(){
+					$.ajax({
+						url: "<c:url value='/member/reVerify' />",
+						type: "POST",
+						data: {
+							uId: '${reEmail}'
+						},
+						success: function(data){
+							if(data == "success"){
+								alert("메일이 발송되었습니다.");
+							}
+						}
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
