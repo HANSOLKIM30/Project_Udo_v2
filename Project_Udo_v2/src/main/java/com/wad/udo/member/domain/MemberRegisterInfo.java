@@ -1,5 +1,9 @@
 package com.wad.udo.member.domain;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class MemberRegisterInfo {
@@ -57,7 +61,7 @@ public class MemberRegisterInfo {
 	}
 	
 	// Register로 받은 변수들을 데이터베이스에 저장하기 위해 MemberInfo 형태로 변환 
-	public MemberInfo toMemberInfo() {
+	public MemberInfo toMemberInfo() throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
 		MemberInfo memberInfo = new MemberInfo();
 		

@@ -1,5 +1,9 @@
 package com.wad.udo.member.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +36,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> login(@RequestParam("uId") String id,
 						@RequestParam("uPW") String pw,
-						HttpServletRequest request) {
+						HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
 		String code = "loginfailed";
 		

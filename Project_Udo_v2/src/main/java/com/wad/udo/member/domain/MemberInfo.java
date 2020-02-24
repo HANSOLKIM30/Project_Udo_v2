@@ -1,5 +1,8 @@
 package com.wad.udo.member.domain;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,7 +22,6 @@ public class MemberInfo {
 	@JsonIgnore
 	private String code;
 	
-
 	// default 생성자
 	public MemberInfo() {
 		getRandonString();
@@ -124,11 +126,6 @@ public class MemberInfo {
 
 		return new LoginInfo(uId, uName, uPhone, uPhoto);
 
-	}
-	
-	// 비밀번호 체크 확인
-	public boolean pwChk(String pw) {
-		return uPW != null && uPW.trim().length()>0 && uPW.equals(pw);
 	}
 	
 	// 영문+숫자 난수 발생

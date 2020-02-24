@@ -2,6 +2,9 @@ package com.wad.udo.member.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wad.udo.member.dao.MemberSessionDao;
+import com.wad.udo.member.domain.AES256Util;
 import com.wad.udo.member.domain.MemberInfo;
 import com.wad.udo.member.domain.MemberRegisterInfo;
 
@@ -21,14 +25,17 @@ public class MemberRegisterService {
 	@Autowired
 	private SqlSessionTemplate template;
 
+	@Autowired
+	private AES256Util aesUtil;
+	
 	private MemberSessionDao dao;
 
 	// member register service
-	public int registMember(HttpServletRequest request, MemberRegisterInfo regInfo) {
+	public int registMember(HttpServletRequest request, MemberRegisterInfo regInfo) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 	
 		dao = template.getMapper(MemberSessionDao.class);
 		
-		MemberInfo memberInfo = regInfo.toMemberInfo();	// MemberRegisterInfo type으로 받은 객체를  memberInfo type의 객체로 변경하여 database에 저장(uPhoto 제외: 하단에서 처리) 
+		MemberInfo memberInfo = regInfo.toMemberInfo();	// MemberRegisterInfo type으로 받은 객체를  memberInfo type의 객체로 변경(uPhoto 제외: 하단에서 처리) 
 		
 		
 		int resultCnt = 0;	// insert 결과 값 변수: insert 성공 시 1, 실패 시 0
@@ -51,9 +58,6 @@ public class MemberRegisterService {
 				memberInfo.setuPhoto(newFileName);			
 			}
 			
-			// memberInfo의 uPhoto 변수까지 set하였으므로 dao에서 insert 실행
-			resultCnt = dao.insertMember(memberInfo);
-			
 		}  catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,6 +65,14 @@ public class MemberRegisterService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		// uPW set process
+		if(regInfo.getuPW() != null) {
+			memberInfo.setuPW(aesUtil.encrypt(regInfo.getuPW()));
+		}
+		
+		// memberInfo의 uPhoto, uPW 변수까지 set하였으므로 dao에서 insert 실행
+		resultCnt = dao.insertMember(memberInfo);
 		
 		return resultCnt;
 	}

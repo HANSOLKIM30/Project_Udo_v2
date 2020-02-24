@@ -91,4 +91,12 @@
 		</beans:property>
 	</beans:bean>
 	
+	<!-- 암호화 - 복호화 설정을 위한 객체 생성 -->
+	<beans:bean id="AES256Util"
+				class="com.wad.udo.member.domain.AES256Util">
+		<beans:constructor-arg>
+			<beans:value>1111111111111111</beans:value>
+		</beans:constructor-arg>
+	</beans:bean>
+		
 </beans:beans>

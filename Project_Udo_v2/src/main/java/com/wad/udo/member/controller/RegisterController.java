@@ -1,5 +1,9 @@
 package com.wad.udo.member.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +40,18 @@ public class RegisterController {
 		
 		int resultCnt = 0;	//결과값에 대한 변수
 		
-		resultCnt = regService.registMember(request, regInfo);
+		try {
+			resultCnt = regService.registMember(request, regInfo);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		System.out.println("resultCnt::::::" + resultCnt);
 		
