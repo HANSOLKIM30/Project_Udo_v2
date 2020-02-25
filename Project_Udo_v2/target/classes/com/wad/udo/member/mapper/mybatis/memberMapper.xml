@@ -54,4 +54,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update member set verify='Y' where uid=#{param1} and code=#{param2}
 		
 	</update>
+	
+	<!-- 이름, 아이디를 통한 회원정보 select: 비밀번호 재발급 후 임시비밀번호로 update시 필요 -->
+	<update id="updateTempPassword">
+	
+		update member set upw=#{param1} where uid=#{param2}
+		
+	</update>
+	
 </mapper>

@@ -13,5 +13,7 @@ public interface MemberSessionDao {
 	public MemberInfo selectMemberByPhone(String uPhone);
 	
 	public int updateVerify(String uId, String code);
+	
+	public int updateTempPassword(String tempuPW, String uId);
 
 }

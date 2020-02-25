@@ -18,6 +18,7 @@ public class MailSenderService {
 	@Autowired
 	private JavaMailSender sender;
 	
+	// 이메일 인증 진행
 	public void sendVerifyMail(HttpServletRequest request, String uId, String code) {
 	
 		MimeMessage message = sender.createMimeMessage();
@@ -51,6 +52,7 @@ public class MailSenderService {
 		}
 	}
 	
+	// 인증 이메일 재송부
 	public void reSendVerifyMail(HttpServletRequest request, String uId, String code) {
 		
 		MimeMessage message = sender.createMimeMessage();
@@ -81,5 +83,32 @@ public class MailSenderService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	// 임시 비밀번호 발급
+	public void sendTempPW(String tempPW, String uId) {
+		
+		MimeMessage message = sender.createMimeMessage();
+		
+		try {
+			message.setSubject("[UDO] 임시 비밀번호 발급", "UTF-8");
+			
+			String htmlMsg = "<h1>[UDO] 임시비밀번호가 발급되었습니다.</h1>";
+			htmlMsg += "<h3>임시비밀번호는 다음과 같습니다.</h3>";
+			htmlMsg += "<h3>"+ tempPW +"</h3>";
+			message.setText(htmlMsg, "UTF-8", "html");
+			
+			message.addRecipient(RecipientType.TO, new InternetAddress(uId, "고객님", "UTF-8"));
+		
+			sender.send(message);
+			
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

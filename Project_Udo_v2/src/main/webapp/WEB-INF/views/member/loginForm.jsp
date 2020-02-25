@@ -61,7 +61,7 @@
 								</div>
 								<div class="card-footer">
                                		<div class="col-md-6 text-center">
-                                    	<a class="text-primary" href="#" style="font-size: 10px">계정을 분실하셨나요?</a>
+                                    	<a class="text-primary" href="<c:url value='/member/lostForm' />" style="font-size: 10px">비밀번호를 잊으셨나요?</a>
                                 	</div>
                                 	<div class="col-md-6 text-center">
                                 	    <a class="text-primary" href="<c:url value='/member/register' />" style="font-size: 10px">아직 계정이 없으신가요?</a>
@@ -122,7 +122,7 @@
 						}
 					},
 					error: function(data){
-						console.log("에러::::::" + data);
+						console.log("에러");
 					}
 				});			
 			}		

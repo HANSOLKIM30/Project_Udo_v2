@@ -310,12 +310,7 @@
 				var uPW = $('#uPW').val();
 				var confirm_uPW = $('#confirm_uPW').val();
 				var uName = $('#uName').val();
-				var uPhone = $('#uPhone').val().trim();
-				
-				/* $('#idCheck').html("");
-				$('#PWCheck').html("");
-				$('#confirmPWCheck').html("");
-				$('#phoneCheck').html(""); */
+				var uPhone = $('#uPhone').val();
 								
 				if(uId == ""){	// id가 null 값일 때.
 					$('#idCheck').css("display","block");
@@ -379,7 +374,7 @@
 							}
 						}, 
 						error: function(data){
-							console.log("에러::::::" + data);
+							console.log("에러");
 						}
 					});
 				}
