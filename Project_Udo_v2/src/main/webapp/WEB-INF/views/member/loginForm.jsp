@@ -61,7 +61,7 @@
 								</div>
 								<div class="card-footer">
                                		<div class="col-md-6 text-center">
-                                    	<a class="text-primary" href="<c:url value='/member/lostForm' />" style="font-size: 10px">비밀번호를 잊으셨나요?</a>
+                                    	<a class="text-primary" href="<c:url value='/member/lost' />" style="font-size: 10px">비밀번호를 잊으셨나요?</a>
                                 	</div>
                                 	<div class="col-md-6 text-center">
                                 	    <a class="text-primary" href="<c:url value='/member/register' />" style="font-size: 10px">아직 계정이 없으신가요?</a>
@@ -115,7 +115,7 @@
 							$('#pw-warning').html("");
 						} else if(data == 'unverified'){					
 							//******이메일 미인증 사용자 창으로 이동******
-							location.href = "<c:url value='/member/unVerified' />";
+							location.href = "<c:url value='/member/verify/unVerified' />";
 						} else{
 							//******mypage로 이동******
 							location.href = "<c:url value='/member/myPage' />";
