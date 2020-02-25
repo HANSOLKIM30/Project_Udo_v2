@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class myPageController {
+public class MyPageController {
 
 	@RequestMapping(value = "member/myPage", method = RequestMethod.GET)
 	public String myPage(){
