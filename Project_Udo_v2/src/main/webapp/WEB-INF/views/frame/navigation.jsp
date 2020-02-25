@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav nav-pills nav-pills-primary ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value='/member/login' />"> 
+					<a class="nav-link" href="<c:url value='/member/myPage' />"> 
 						<i class="material-icons">face</i> My Page
 					</a>
 				</li>
