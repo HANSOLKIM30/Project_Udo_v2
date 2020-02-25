@@ -104,7 +104,7 @@
                                         </span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="uPhone" class="bmd-label-floating">Phone ('-'제외 입력)</label>
+                                        <label for="uPhone" class="bmd-label-floating">Phone ('-'필수 입력)</label>
                                         <input type="text" class="form-control" id="uPhone" name="uPhone">
                                         <input type="checkbox" id="phoneCheckBox_validate" style="display: none">
                                         <input type="checkbox" id="phoneCheckBox_overlap" style="display: none">
@@ -347,7 +347,7 @@
 					$('#confirm_uPW').focus();
 				} else if(!$('#phoneCheckBox_validate').prop('checked') || !$('#phoneCheckBox_overlap').prop('checked')){	// phone 유효성 검사 실패 및 형식 검사 실패
 					$('#phoneCheck').css("display","block");
-	                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">반호를 다시 입력해주세요.</p>");
+	                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">번호를 다시 입력해주세요.</p>");
 					$('#uPhone').focus();
 				} else{	//submit
 					//ajax에 담아보낼 객체 생성

@@ -44,8 +44,10 @@ public class MemberRegisterService {
 		int resultCnt = 0;	// insert 결과 값 변수: insert 성공 시 1, 실패 시 0
 		
 		// uPhoto set process
-		String path = "/userImages";
+		String path = "/uploadFile";
 		String dir = request.getSession().getServletContext().getRealPath(path);
+		System.out.println("사진 저장 경로::::::" + dir);
+		
 		String newFileName = "";
 		
 		try {
@@ -136,7 +138,7 @@ public class MemberRegisterService {
 		
 		// 핸드폰번호 양식인지 유효성 검사
 		// 핸드폰번호 유효성 검사를 위한 정규표현식
-		String regex = "^01[016789]\\d{3,4}\\d{4}$";
+		String regex = "^01[016789]-\\d{3,4}-\\d{4}$";
 		// 정규표현식 컴파일
 		Pattern pattern = Pattern.compile(regex);
 		// 문자 매칭
