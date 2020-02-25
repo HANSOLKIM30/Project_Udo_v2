@@ -117,7 +117,6 @@
 							//******이메일 미인증 사용자 창으로 이동******
 							location.href = "<c:url value='/member/unVerified' />";
 						} else{
-							member/myPage;
 							//******mypage로 이동******
 							location.href = "<c:url value='/member/myPage' />";
 						}
