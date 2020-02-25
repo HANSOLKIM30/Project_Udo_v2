@@ -153,7 +153,7 @@
 				} else{	// id가 null 값이 아니라면,
 					// ajax를 통한 비동기 통신으로 uId 값이 데이터베이스에 존재하는지 확인
 					$.ajax({
-						url: "<c:url value='/member/checkId' />",
+						url: "<c:url value='/member/register/checkId' />",
 						type: 'GET',
 						data: {
 							uId: uId
@@ -204,7 +204,7 @@
 				} else{ // pw가 null 값이 아니라면,
 					// pw 유효성 검사
 					$.ajax({
-						url: "<c:url value='/member/checkPW' />",
+						url: "<c:url value='/member/register/checkPW' />",
 						type: 'GET',
 						data: {
 							uPW: uPW
@@ -270,7 +270,7 @@
 				} else{	// uphone이 null 값이 아니라면,
 					// 값 비교			
 					$.ajax({
-						url: "<c:url value='/member/checkPhone' />",
+						url: "<c:url value='/member/register/checkPhone' />",
 						type: 'GET',
 						data: {
 							uPhone: uPhone

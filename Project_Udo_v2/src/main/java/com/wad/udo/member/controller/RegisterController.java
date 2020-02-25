@@ -18,13 +18,14 @@ import com.wad.udo.member.domain.MemberRegisterInfo;
 import com.wad.udo.member.service.MemberRegisterService;
 
 @Controller
+@RequestMapping("member/register")
 public class RegisterController {
 
 	@Autowired
 	private MemberRegisterService regService;
 	
 	// register page 반환
-	@RequestMapping(value = "member/register", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String regForm() {
 		String view = "member/registerForm";
 		return view;
@@ -33,7 +34,7 @@ public class RegisterController {
 	// 회원가입 시 controller
 	// MemberRegisterInfo 객체를 parameter로 담음으로서 커맨드 객체로 활용 가능
 	// form에서 넘어오는 값들이 MemberRegisterInfo 커맨드 객체에 자동으로 저장(uId/uPW/uName/uPhoto);
-	@RequestMapping(value = "member/register", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> register(MemberRegisterInfo regInfo, HttpServletRequest request) {
 		
 		System.out.println(regInfo);	// 잘 받아왔는지 toString으로 확인
@@ -59,7 +60,7 @@ public class RegisterController {
 	}
 	
 	// id check controller
-	@RequestMapping(value = "member/checkId", method = RequestMethod.GET)
+	@RequestMapping(value = "checkId", method = RequestMethod.GET)
 	public ResponseEntity<String> idCheck(@RequestParam("uId") String uId){
 		
 		String code = "";
@@ -84,7 +85,7 @@ public class RegisterController {
 	}
 	
 	// PW check controller
-	@RequestMapping(value = "member/checkPW", method = RequestMethod.GET)
+	@RequestMapping(value = "checkPW", method = RequestMethod.GET)
 	public ResponseEntity<String> PWCheck(@RequestParam("uPW") String uPW){
 		
 		boolean pwCheck = regService.checkPW(uPW);
@@ -97,7 +98,7 @@ public class RegisterController {
 	}
 	
 	// phone check controller
-	@RequestMapping(value = "member/checkPhone", method=RequestMethod.GET)
+	@RequestMapping(value = "checkPhone", method=RequestMethod.GET)
 	public ResponseEntity<String> phoneCheck(@RequestParam("uPhone") String uPhone){
 		
 		String code = "";

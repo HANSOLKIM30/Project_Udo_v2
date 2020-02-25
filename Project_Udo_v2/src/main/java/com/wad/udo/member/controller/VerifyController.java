@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wad.udo.member.service.MemberVerifyService;
 
 @Controller
+@RequestMapping("member/verify")
 public class VerifyController {
 
 	@Autowired
 	private MemberVerifyService service;
 	
 	// 이메일 내 인증 링크 눌렀을 때 페이지 반환
-	@RequestMapping(value = "member/verify", method =RequestMethod.GET)
+	@RequestMapping(method =RequestMethod.GET)
 	public String verify(@RequestParam("uId") String uId, @RequestParam("code") String code) {
 		
 		String result = service.updateVerify(uId, code);
@@ -30,13 +31,13 @@ public class VerifyController {
 	}
 	
 	// 이메일 미인증 회원 로그인 시 페이지 반환
-	@RequestMapping(value = "member/unVerified", method =RequestMethod.GET)
+	@RequestMapping(value = "unVerified", method =RequestMethod.GET)
 	public String notVerified() {
 		return "/member/unVerified"; 
 	}
 	
 	// 인증 이메일 재발송
-	@RequestMapping(value = "member/reVerify", method = RequestMethod.POST)
+	@RequestMapping(value = "reVerify", method = RequestMethod.POST)
 	public ResponseEntity<String> reVerify(HttpServletRequest request, @RequestParam("uId") String uId) {
 		
 		int result = service.reSendVerifyMail(request, uId);

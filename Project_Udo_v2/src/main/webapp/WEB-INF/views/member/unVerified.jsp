@@ -11,7 +11,7 @@
 		<!-- 해더 끝 -->
 	</head>	
 	<body>
-		 <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/udo4.jpg')">
+		 <div class="page-header header-filter" data-parallax="true" style="background-image: url('../../assets/img/udo4.jpg')">
 	        <div class="container text-center">
 	          	<div>
 	                <h2 class="title" style="font-family: 'Gothic A1', sans-serif; line-height: 150%">
@@ -35,7 +35,7 @@
 			$(document).ready(function(){
 				$('#resendMail').click(function(){
 					$.ajax({
-						url: "<c:url value='/member/reVerify' />",
+						url: "<c:url value='/member/verify/reVerify' />",
 						type: "POST",
 						data: {
 							uId: '${reEmail}'

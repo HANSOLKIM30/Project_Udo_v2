@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wad.udo.member.service.MemberLostPWService;
 
 @Controller
+@RequestMapping("member/lost")
 public class LostPWController {
 
 	@Autowired
 	MemberLostPWService service;
 	
-	@RequestMapping(value = "member/lostForm", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String lostForm(){
 		
 		String view = "member/lostForm";
@@ -29,7 +30,7 @@ public class LostPWController {
 	}
 	
 	// 임시 비밀번호 발급 컨트롤러
-	@RequestMapping(value = "member/lostPW", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> lostPW(@RequestParam("uId") String uId) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException{
 		
 		/*
