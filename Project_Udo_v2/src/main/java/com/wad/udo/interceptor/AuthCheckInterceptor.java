@@ -24,7 +24,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 		
-		// 아니라면 메인 페이지로 이동
+		// 아니라면 로그인 페이지로 이동
 		response.sendRedirect(request.getContextPath() + "/member/login");
 		
 		return false;

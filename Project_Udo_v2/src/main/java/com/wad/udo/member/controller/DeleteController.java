@@ -23,7 +23,7 @@ public class DeleteController {
 	@Autowired
 	private MemberDeleteService service;
 	
-	//회원탈퇴 폼(비밀번호 입력으로 재확인) 불러오기
+	// 회원탈퇴 폼(비밀번호 입력으로 재확인) 불러오기
 	@RequestMapping(method = RequestMethod.GET)
 	public String DeleteForm() {
 		
@@ -32,7 +32,7 @@ public class DeleteController {
 		return view;
 	}
 	
-	//회원탈퇴
+	// 회원탈퇴
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> DeleteMember(HttpSession session, @RequestParam("uPW") String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
