@@ -39,7 +39,7 @@ public class MailSenderService {
 			htmlMsg += "<h3>안녕하세요.<br> 이메일 계정을 인증 받으시려면 아래 링크를 클릭해주세요.</h3><br><h3><a href='"+scheme+serverName+serverPort+contextPath+"/member/verify?uId="+uId+"&code="+code+"'>이메일 인증하기</a></h3>";
 			message.setText(htmlMsg, "UTF-8", "html");
 			
-			message.addRecipient(RecipientType.TO, new InternetAddress(uId, "고객", "UTF-8"));
+			message.addRecipient(RecipientType.TO, new InternetAddress(uId, "고객님", "UTF-8"));
 
 			sender.send(message);
 			
@@ -72,7 +72,7 @@ public class MailSenderService {
 		 	htmlMsg += "<h3>안녕하세요.<br> 이메일 계정을 인증 받으시려면 아래 링크를 클릭해주세요.</h3><br><h3><a href='"+scheme+serverName+serverPort+contextPath+"/member/verify?uId="+uId+"&code="+code+"'>이메일 인증하기</a></h3>";
 		 	message.setText(htmlMsg, "UTF-8", "html");
 		 			
-		 	message.addRecipient(RecipientType.TO, new InternetAddress(uId, "고객", "UTF-8"));
+		 	message.addRecipient(RecipientType.TO, new InternetAddress(uId, "고객님", "UTF-8"));
 
 		 	sender.send(message);
 		    
