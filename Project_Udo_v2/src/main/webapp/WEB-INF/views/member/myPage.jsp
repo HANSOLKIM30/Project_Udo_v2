@@ -98,7 +98,7 @@
 	                                </a>
 	                            </div>
 	                            <div class="col-md-4 text-center">
-	                                <a class="text-primary" href="#" style="font-size: 12px">
+	                                <a class="text-primary" href="<c:url value='/member/myPage/logout' />" style="font-size: 12px">
 	                                  	로그아웃
 	                                </a>
 	                            </div>
