@@ -14,7 +14,7 @@
 	<br>
 	<br>
 	<br>
-	<body class="sidebar-collapse">
+	<body class="login-page sidebar-collapse">
 		<!-- 네비게이션 시작  -->
 		<%@ include file="/WEB-INF/views/frame/navigation.jsp"%>
 		<!-- 네비게이션 끝 -->
@@ -30,10 +30,10 @@
 		                            <c:set var = "uPhoto" value = "${loginInfo.uPhoto}" />
 			                         <c:choose>
 			                          	<c:when test="${empty uPhoto}">
-			                           		<img src="../uploadFile/no_images.jpg" class="img-raised rounded-circle img-fluid" style="width: 150px; height: 150px">
+			                           		<img src="../uploadFile/no_images.jpg" style="width: 150px; height: auto">
 			                           	</c:when>
 			                           	<c:otherwise>
-			                           		<img src="../uploadFile/${loginInfo.uPhoto}" class="img-raised rounded-circle img-fluid" style="width: 150px; height: auto">
+			                           		<img src="../uploadFile/${loginInfo.uPhoto}" style="width: 150px; height: auto">
 			                           	</c:otherwise>
 			                            </c:choose>                                
 		                        </div>
@@ -93,7 +93,7 @@
 	                        </div>
 	                        <div class="card-footer">
 	                            <div class="col-md-4 text-center">
-	                                <a class="text-primary" href="<c:url value='/member/updateForm' />" style="font-size: 12px">
+	                                <a class="text-primary" href="<c:url value='/member/myPage/updateForm' />" style="font-size: 12px">
 	                                	프로필 변경
 	                                </a>
 	                            </div>

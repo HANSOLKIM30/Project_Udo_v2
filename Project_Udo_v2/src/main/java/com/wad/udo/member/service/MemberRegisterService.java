@@ -8,11 +8,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.wad.udo.member.dao.MemberSessionDao;
 import com.wad.udo.member.domain.AES256Util;
@@ -34,7 +33,7 @@ public class MemberRegisterService {
 	private MemberSessionDao dao;
 
 	// member register service
-	public int registMember(HttpServletRequest request, MemberRegisterInfo regInfo) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+	public int registMember(MultipartHttpServletRequest request, MemberRegisterInfo regInfo) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 	
 		dao = template.getMapper(MemberSessionDao.class);
 		
