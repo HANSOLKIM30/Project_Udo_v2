@@ -61,7 +61,7 @@
 				$('#uId').focus();
 			} else {
 				$.ajax({
-					url : "<c:url value='/member/lostPW' />",
+					url : "<c:url value='/member/lost' />",
 					type : 'POST',
 					data : {
 						uId : uId
