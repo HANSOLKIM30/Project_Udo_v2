@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -95,7 +93,7 @@
 	                        </div>
 	                        <div class="card-footer">
 	                            <div class="col-md-4 text-center">
-	                                <a class="text-primary" href="#" style="font-size: 12px">
+	                                <a class="text-primary" href="<c:url value='/member/updateForm' />" style="font-size: 12px">
 	                                	프로필 변경
 	                                </a>
 	                            </div>
@@ -105,7 +103,7 @@
 	                                </a>
 	                            </div>
 	                            <div class="col-md-4 text-center">
-	                                <a class="text-primary" href="#" style="font-size: 12px">
+	                                <a class="text-primary" href="<c:url value='/member/myPage/delete' />" style="font-size: 12px">
 	                                   	 회원탈퇴
 	                                </a>
 	                            </div>

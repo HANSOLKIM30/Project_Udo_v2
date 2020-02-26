@@ -51,15 +51,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 이메일 인증 코드 업데이트  -->
 	<update id="updateVerify">
 	
-		update member set verify='Y' where uid=#{param1} and code=#{param2}
+		update member set verify='Y' where uid = #{param1} and code = #{param2}
 		
 	</update>
 	
 	<!-- 이름, 아이디를 통한 회원정보 select: 비밀번호 재발급 후 임시비밀번호로 update시 필요 -->
 	<update id="updateTempPassword">
 	
-		update member set upw=#{param1} where uid=#{param2}
+		update member set upw = #{param1} where uid = #{param2}
 		
 	</update>
 	
+	<!-- id를 통한 회원탈퇴: 회원일 경우 session에 저장된 loginInfo 객체에서 uId를 받아온다 -->
+	<delete id="deleteMemberById">
+	
+		delete from member where uid = #{uId}
+		
+	</delete>
 </mapper>

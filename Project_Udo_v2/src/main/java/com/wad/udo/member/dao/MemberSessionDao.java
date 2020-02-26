@@ -15,5 +15,7 @@ public interface MemberSessionDao {
 	public int updateVerify(String uId, String code);
 	
 	public int updateTempPassword(String tempuPW, String uId);
+	
+	public int deleteMemberById(String uId);
 
 }
