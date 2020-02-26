@@ -48,7 +48,7 @@
 	                </h1>
 	                <h4 class="motto" style="margin-bottom: -40px;">스쿠터를 타고 아름다운 우도의 경치를 느껴보세요</h4>
 	                <h5 class="info-text" style="text-align: center">
-	                	<a href="member/login" class="btn btn-primary btn-lg" style="color:white;border-">시작하기</a>
+	                	<a href="member/myPage" class="btn btn-primary btn-lg" style="color:white;border-">시작하기</a>
 	                </h5>
 	                <div class="subscribe">                  
 	                    <div class="row">
