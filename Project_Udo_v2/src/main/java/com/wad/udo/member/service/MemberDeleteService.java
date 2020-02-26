@@ -28,7 +28,7 @@ public class MemberDeleteService {
 	private AES256Util aesUtil;
 	
 	// 회원탈퇴
-	public int signOut(HttpServletRequest request, HttpSession session, String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+	public int signOut(HttpSession session, String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
 		dao = template.getMapper(MemberSessionDao.class);
 		
@@ -54,7 +54,7 @@ public class MemberDeleteService {
 				// 데이터베이스에서 삭제 → 회원탈퇴
 				result = dao.deleteMemberById(memberInfo.getuId());
 				// 세션 무효화
-				request.getSession(false).invalidate();
+				session.invalidate();
 			}
 		}
 		

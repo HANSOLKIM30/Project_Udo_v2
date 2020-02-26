@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +34,9 @@ public class DeleteController {
 	
 	//회원탈퇴
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> DeleteMember(HttpServletRequest request, HttpSession session, @RequestParam("uPW") String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+	public ResponseEntity<String> DeleteMember(HttpSession session, @RequestParam("uPW") String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
-		int result = service.signOut(request, session, uPW);
+		int result = service.signOut(session, uPW);
 		
 		System.out.println("삭제 결과값::::::" + result);
 		
