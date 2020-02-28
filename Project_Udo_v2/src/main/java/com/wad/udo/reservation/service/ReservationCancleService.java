@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.wad.udo.reservation.dao.RvSessionDao;
 
 @Service("delService")
-public class RvDeleteService {
+public class ReservationCancleService {
 
 	@Autowired
 	private SqlSessionTemplate template;

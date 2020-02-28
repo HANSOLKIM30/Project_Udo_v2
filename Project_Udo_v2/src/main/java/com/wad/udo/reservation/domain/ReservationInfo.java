@@ -1,6 +1,6 @@
 package com.wad.udo.reservation.domain;
 
-public class RvInfo {
+public class ReservationInfo {
 
 	private int rv_idx;
 	private int idx;
@@ -41,7 +41,7 @@ public class RvInfo {
 		this.rv_bike = rv_bike;
 	}
 	
-	public RvInfo(int rv_idx, int idx, String rv_date, int rv_time, int rv_bike) {
+	public ReservationInfo(int rv_idx, int idx, String rv_date, int rv_time, int rv_bike) {
 		this.rv_idx = rv_idx;
 		this.idx = idx;
 		this.rv_date = rv_date;
@@ -50,7 +50,7 @@ public class RvInfo {
 	}
 
 	//default ?��?��?��
-	public RvInfo() {
+	public ReservationInfo() {
 
 	}
 	

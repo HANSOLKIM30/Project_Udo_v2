@@ -10,31 +10,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wad.udo.reservation.domain.RvInfo;
-import com.wad.udo.reservation.service.RvListService;
+import com.wad.udo.reservation.domain.ReservationInfo;
+import com.wad.udo.reservation.service.ReservationListService;
 
 @Controller
-public class RvListController {
+public class ListController {
 
 	@Autowired
-	private RvListService service;
+	private ReservationListService service;
 	
 	@RequestMapping(value = "/rv/list/allList", method = RequestMethod.GET)
-	public ResponseEntity<List<RvInfo>> getAllList() {
+	public ResponseEntity<List<ReservationInfo>> getAllList() {
 
-		List<RvInfo> list = service.selectAllList();
+		List<ReservationInfo> list = service.selectAllList();
 
-		ResponseEntity<List<RvInfo>> entity = new ResponseEntity<List<RvInfo>>(list, HttpStatus.OK);
+		ResponseEntity<List<ReservationInfo>> entity = new ResponseEntity<List<ReservationInfo>>(list, HttpStatus.OK);
 
 		return entity;
 	}
 
 	@RequestMapping(value = "/rv/list/myRvList/{idx}", method = RequestMethod.GET)
-	public ResponseEntity<List<RvInfo>> getBikeIdx(@PathVariable("idx") int idx) {
+	public ResponseEntity<List<ReservationInfo>> getBikeIdx(@PathVariable("idx") int idx) {
 		
-		List<RvInfo> list = service.selectListByIdx(idx);
+		List<ReservationInfo> list = service.selectListByIdx(idx);
 
-		ResponseEntity<List<RvInfo>> entity = new ResponseEntity<List<RvInfo>>(list, HttpStatus.OK);
+		ResponseEntity<List<ReservationInfo>> entity = new ResponseEntity<List<ReservationInfo>>(list, HttpStatus.OK);
 
 		return entity;
 	}

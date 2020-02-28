@@ -7,22 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wad.udo.reservation.dao.RvSessionDao;
-import com.wad.udo.reservation.domain.RvInfo;
-import com.wad.udo.reservation.domain.RvRegInfo;
+import com.wad.udo.reservation.domain.ReservationInfo;
+import com.wad.udo.reservation.domain.ReservationRegisterInfo;
 
 @Service("reservationService")
-public class RvInsertService {
+public class ReservationService {
 
 	@Autowired
 	private SqlSessionTemplate template;
 	
 	private RvSessionDao dao;
 	
-	public int insertRv(RvRegInfo regInfo, HttpServletRequest request, int idx) {
+	public int insertRv(ReservationRegisterInfo regInfo, HttpServletRequest request, int idx) {
 		
 		dao = template.getMapper(RvSessionDao.class);
 		
-		RvInfo rvInfo = regInfo.toRvInfo();
+		ReservationInfo rvInfo = regInfo.toRvInfo();
 		
 		rvInfo.setIdx(idx);
 		

@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wad.udo.reservation.dao.RvSessionDao;
-import com.wad.udo.reservation.domain.ChkRvAm;
-import com.wad.udo.reservation.domain.ChkRvPm;
-import com.wad.udo.reservation.domain.RvInfo;
+import com.wad.udo.reservation.domain.CheckAM;
+import com.wad.udo.reservation.domain.CheckPM;
+import com.wad.udo.reservation.domain.ReservationInfo;
 import com.wad.udo.reservation.domain.WeekInfo;
 
 @Service("dateService")
-public class RvWeekChkService {
+public class WeekCheckService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -148,13 +148,13 @@ public class RvWeekChkService {
 	
 	
 	//?��?�� ?��?��?���? 체크?���?
-	public List<ChkRvAm> getChkRvAm(int rv_bike){
+	public List<CheckAM> getChkRvAm(int rv_bike){
 		System.out.println(":::::::::::::::::::::::?��?��!::::::::::::::::::::::::::::::");
 		//dao ?��?��?���?
 		dao = template.getMapper(RvSessionDao.class);
 		
 		//받아?�� 객체 ?��?��?���?
-		List<ChkRvAm> chkRvAmList = new ArrayList<ChkRvAm>();
+		List<CheckAM> chkRvAmList = new ArrayList<CheckAM>();
 
 		//1. rv_date1, rv_date2 ?���? ?��?��
 		List<WeekInfo> weekList = this.getWeekInfo();
@@ -173,11 +173,11 @@ public class RvWeekChkService {
 		
 		//2. ?��쿠터 번호?? ?��?�� ?��짜�?? ?��?�� 객체 받아?���? 
 
-			List<RvInfo> rvInfoList = dao.selectListByBikeAm(rv_bike, rv_date1, rv_date2);
+			List<ReservationInfo> rvInfoList = dao.selectListByBikeAm(rv_bike, rv_date1, rv_date2);
 			
 		//3. ?��?��?���??��?��?�� 객체?�� true / false 반환
 			for(int i = 0; i < weekList.size(); i++) {
-				ChkRvAm chkRvAm = new ChkRvAm();
+				CheckAM chkRvAm = new CheckAM();
 				//?��?�� ?���? 받아?���?
 				String weekDate = weekList.get(i).toStringDate();
 				//받아?�� ?���? ?��?��
@@ -212,13 +212,13 @@ public class RvWeekChkService {
 	
 	
 	//?��?�� ?��?��?���? 체크?���?
-	public List<ChkRvPm> getChkRvPm(int rv_bike){
+	public List<CheckPM> getChkRvPm(int rv_bike){
 		System.out.println(":::::::::::::::::::::::?��?��!::::::::::::::::::::::::::::::");
 		//dao ?��?��?���?
 		dao = template.getMapper(RvSessionDao.class);
 		
 		//받아?�� 객체 ?��?��?���?
-		List<ChkRvPm> chkRvPmList = new ArrayList<ChkRvPm>();
+		List<CheckPM> chkRvPmList = new ArrayList<CheckPM>();
 		
 		//1. rv_date1, rv_date2 ?���? ?��?��?�� ?��?�� ?��주일 객체 받아?���?
 		List<WeekInfo> weekList = this.getWeekInfo();
@@ -238,12 +238,12 @@ public class RvWeekChkService {
 		//2. ?��쿠터 번호?? ?��?�� ?��짜�?? ?��?�� 객체 받아?���?
 
 			//객체�? ?��?��??�? 착착�? ?��?��?��겠�??
-			List<RvInfo> rvInfoList = dao.selectListByBikePm(rv_bike, rv_date1, rv_date2);
+			List<ReservationInfo> rvInfoList = dao.selectListByBikePm(rv_bike, rv_date1, rv_date2);
 			
 		//3. ?��?��?���??��?��?�� 객체?�� true / false 반환
 			for(int i = 0; i < weekList.size(); i++) {
 				
-				ChkRvPm chkRvPm = new ChkRvPm();
+				CheckPM chkRvPm = new CheckPM();
 				
 				//?��?�� ?���? 받아?���?
 				String weekDate = weekList.get(i).toStringDate();

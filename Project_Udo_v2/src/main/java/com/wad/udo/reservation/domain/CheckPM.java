@@ -1,6 +1,6 @@
 package com.wad.udo.reservation.domain;
 
-public class ChkRvPm {
+public class CheckPM {
 
 	private boolean chkRvPm;
 
@@ -12,12 +12,12 @@ public class ChkRvPm {
 		this.chkRvPm = chkRvPm;
 	}
 
-	public ChkRvPm(boolean chkRvPm) {
+	public CheckPM(boolean chkRvPm) {
 		super();
 		this.chkRvPm = chkRvPm;
 	}
 
-	public ChkRvPm() {
+	public CheckPM() {
 
 	}
 	

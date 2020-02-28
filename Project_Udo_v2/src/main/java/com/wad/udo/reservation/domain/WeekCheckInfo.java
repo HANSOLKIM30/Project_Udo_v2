@@ -2,22 +2,22 @@ package com.wad.udo.reservation.domain;
 
 import java.util.List;
 
-public class WeekChkInfo {
+public class WeekCheckInfo {
 	
-	private List<ChkRvAm> chkRvAmList;
-	private List<ChkRvPm> chkRvPmList;
+	private List<CheckAM> chkRvAmList;
+	private List<CheckPM> chkRvPmList;
 	private List<WeekInfo> weekInfoList;
 	
-	public List<ChkRvAm> getChkRvAmList() {
+	public List<CheckAM> getChkRvAmList() {
 		return chkRvAmList;
 	}
-	public void setChkRvAmList(List<ChkRvAm> chkRvAmList) {
+	public void setChkRvAmList(List<CheckAM> chkRvAmList) {
 		this.chkRvAmList = chkRvAmList;
 	}
-	public List<ChkRvPm> getChkRvPmList() {
+	public List<CheckPM> getChkRvPmList() {
 		return chkRvPmList;
 	}
-	public void setChkRvPmList(List<ChkRvPm> chkRvPmList) {
+	public void setChkRvPmList(List<CheckPM> chkRvPmList) {
 		this.chkRvPmList = chkRvPmList;
 	}
 	public List<WeekInfo> getWeekInfoList() {
@@ -27,13 +27,13 @@ public class WeekChkInfo {
 		this.weekInfoList = weekInfoList;
 	}
 	
-	public WeekChkInfo(List<ChkRvAm> chkRvAmList, List<ChkRvPm> chkRvPmList, List<WeekInfo> weekInfoList) {
+	public WeekCheckInfo(List<CheckAM> chkRvAmList, List<CheckPM> chkRvPmList, List<WeekInfo> weekInfoList) {
 		this.chkRvAmList = chkRvAmList;
 		this.chkRvPmList = chkRvPmList;
 		this.weekInfoList = weekInfoList;
 	}
 	
-	public WeekChkInfo() {
+	public WeekCheckInfo() {
 
 	}
 	

@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wad.udo.reservation.domain.ChkRvAm;
-import com.wad.udo.reservation.domain.ChkRvPm;
-import com.wad.udo.reservation.domain.WeekChkInfo;
+import com.wad.udo.reservation.domain.CheckAM;
+import com.wad.udo.reservation.domain.CheckPM;
+import com.wad.udo.reservation.domain.WeekCheckInfo;
 import com.wad.udo.reservation.domain.WeekInfo;
-import com.wad.udo.reservation.service.RvWeekChkService;
+import com.wad.udo.reservation.service.WeekCheckService;
 
 @Controller
-public class RvWeekChkController {
+public class WeekCheckController {
 
 	@Autowired
-	private RvWeekChkService service;
+	private WeekCheckService service;
 	
 	@RequestMapping(value = "/rv/weekChk/{rv_bike}", method = RequestMethod.GET)
-	public ResponseEntity<WeekChkInfo> getWeek(@PathVariable("rv_bike") int rv_bike) {
+	public ResponseEntity<WeekCheckInfo> getWeek(@PathVariable("rv_bike") int rv_bike) {
 		
 		List<WeekInfo> weekInfoList = service.getWeekInfo();
-		List<ChkRvAm> chkRvAmList = service.getChkRvAm(rv_bike);
-		List<ChkRvPm> chkRvPmList = service.getChkRvPm(rv_bike);
+		List<CheckAM> chkRvAmList = service.getChkRvAm(rv_bike);
+		List<CheckPM> chkRvPmList = service.getChkRvPm(rv_bike);
 		
-		WeekChkInfo weekChkInfo = new WeekChkInfo();
+		WeekCheckInfo weekChkInfo = new WeekCheckInfo();
 		
 		weekChkInfo.setWeekInfoList(weekInfoList);
 		weekChkInfo.setChkRvAmList(chkRvAmList);
 		weekChkInfo.setChkRvPmList(chkRvPmList);
 		
-		ResponseEntity<WeekChkInfo> entity = new ResponseEntity<WeekChkInfo>(weekChkInfo, HttpStatus.OK);
+		ResponseEntity<WeekCheckInfo> entity = new ResponseEntity<WeekCheckInfo>(weekChkInfo, HttpStatus.OK);
 		
 		return entity;
 	}

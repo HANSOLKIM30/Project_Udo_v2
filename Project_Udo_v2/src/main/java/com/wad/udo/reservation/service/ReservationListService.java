@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wad.udo.reservation.dao.RvSessionDao;
-import com.wad.udo.reservation.domain.RvInfo;
+import com.wad.udo.reservation.domain.ReservationInfo;
 
 @Service("rvListService")
-public class RvListService {
+public class ReservationListService {
 
 	@Autowired
 	private SqlSessionTemplate template;
@@ -18,39 +18,39 @@ public class RvListService {
 	private RvSessionDao dao;
 
 	// ?���? 리스?�� 출력
-	public List<RvInfo> selectAllList() {
+	public List<ReservationInfo> selectAllList() {
 
 		dao = template.getMapper(RvSessionDao.class);
 
-		List<RvInfo> list = dao.selectList();
+		List<ReservationInfo> list = dao.selectList();
 
 		return list;
 	}
 
 	// ?��?��번호�? ?��?�� 리스?�� 출력
-	public List<RvInfo> selectListByIdx(int idx) {
+	public List<ReservationInfo> selectListByIdx(int idx) {
 
 		dao = template.getMapper(RvSessionDao.class);
 
-		List<RvInfo> list = dao.selectListByIdx(idx);
+		List<ReservationInfo> list = dao.selectListByIdx(idx);
 
 		return list;
 	}
 
-	public List<RvInfo> selectListByBikeAm(int rv_bike, String rv_date1, String rv_date2) {
+	public List<ReservationInfo> selectListByBikeAm(int rv_bike, String rv_date1, String rv_date2) {
 
 		dao = template.getMapper(RvSessionDao.class);
 
-		List<RvInfo> list = dao.selectListByBikeAm(rv_bike, rv_date1, rv_date2);
+		List<ReservationInfo> list = dao.selectListByBikeAm(rv_bike, rv_date1, rv_date2);
 
 		return list;
 	}
 
-	public List<RvInfo> selectListByBikePm(int rv_bike, String rv_date1, String rv_date2) {
+	public List<ReservationInfo> selectListByBikePm(int rv_bike, String rv_date1, String rv_date2) {
 
 		dao = template.getMapper(RvSessionDao.class);
 
-		List<RvInfo> list = dao.selectListByBikePm(rv_bike, rv_date1, rv_date2);
+		List<ReservationInfo> list = dao.selectListByBikePm(rv_bike, rv_date1, rv_date2);
 
 		return list;
 	}

@@ -10,32 +10,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wad.udo.reservation.domain.RvRegInfo;
-import com.wad.udo.reservation.service.RvInsertService;
+import com.wad.udo.reservation.domain.ReservationRegisterInfo;
+import com.wad.udo.reservation.service.ReservationService;
 
 @Controller
-public class RvController {
+@RequestMapping("scooter/reservation")
+public class ReservationController {
 
 	@Autowired
-	private RvInsertService rvService;
+	private ReservationService service;
 
-	@RequestMapping(value = "reservation/makeReservation")
+	// 예약 페이지 호출
+	@RequestMapping(value = "makeReservation", method = RequestMethod.GET)
 	public String getMakeReservationForm() {
-		return "reservation/makeReservation";
+		return "scooter/makeReservation";
 	}
 	
-	@RequestMapping(value = "reservation/changeReservation")
-	public String getChangeReservationForm() {
-		return "reservation/changeReservation";
-	}
+	
 	
 	
 	@RequestMapping(value = "/rv/reservation/{idx}", method = RequestMethod.POST)
-	public ResponseEntity<String> reservation(RvRegInfo regInfo, HttpServletRequest request, @PathVariable("idx") int idx) {
+	public ResponseEntity<String> reservation(ReservationRegisterInfo regInfo, HttpServletRequest request, @PathVariable("idx") int idx) {
 		
 		System.out.println(regInfo);
 		
-		int cnt = rvService.insertRv(regInfo, request, idx);
+		int cnt = service.insertRv(regInfo, request, idx);
 
 		return new ResponseEntity<String>(cnt > 0 ? "success" : "fail", HttpStatus.OK);
 	}

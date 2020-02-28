@@ -1,6 +1,6 @@
 package com.wad.udo.reservation.domain;
 
-public class RvRegInfo {
+public class ReservationRegisterInfo {
 
 	private String rv_date;
 	private int rv_time;
@@ -26,20 +26,20 @@ public class RvRegInfo {
 	}
 	
 	
-	public RvRegInfo(String rv_date, int rv_time, int rv_bike) {
+	public ReservationRegisterInfo(String rv_date, int rv_time, int rv_bike) {
 		this.rv_date = rv_date;
 		this.rv_time = rv_time;
 		this.rv_bike = rv_bike;
 	}
 	
 	
-	public RvRegInfo() {
+	public ReservationRegisterInfo() {
 
 	}
 	
-	public RvInfo toRvInfo() {
+	public ReservationInfo toRvInfo() {
 		
-		RvInfo rvInfo = new RvInfo();
+		ReservationInfo rvInfo = new ReservationInfo();
 		rvInfo.setRv_date(this.rv_date);
 		rvInfo.setRv_time(this.rv_time);
 		rvInfo.setRv_bike(this.rv_bike);

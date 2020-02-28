@@ -5,17 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wad.udo.reservation.dao.RvSessionDao;
-import com.wad.udo.reservation.domain.RvInfo;
+import com.wad.udo.reservation.domain.ReservationInfo;
 
 @Service("rvUpdateService")
-public class RvUpdateService {
+public class ReservationChangeService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
 	
 	private RvSessionDao dao;
 
-	public int updateRv(RvInfo rvInfo) {
+	public int updateRv(ReservationInfo rvInfo) {
 		
 		dao = template.getMapper(RvSessionDao.class);
 		

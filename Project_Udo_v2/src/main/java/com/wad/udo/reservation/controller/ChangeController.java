@@ -8,22 +8,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wad.udo.reservation.domain.RvInfo;
-import com.wad.udo.reservation.service.RvUpdateService;
+import com.wad.udo.reservation.domain.ReservationInfo;
+import com.wad.udo.reservation.service.ReservationChangeService;
 
 @Controller
-public class RvUpdateController {
+public class ChangeController {
 
 	@Autowired
-	private RvUpdateService updateService;
+	private ReservationChangeService updateService;
+
+	// 예약 변경 페이지 호출
+	@RequestMapping(value = "reservation/changeReservation")
+	public String getChangeReservationForm() {
+		return "scooter/changeReservation";
+	}
 
 	@RequestMapping(value = "/rv/reservation", method = RequestMethod.POST)
-	public ResponseEntity<String> reservation(@RequestBody RvInfo rvInfo){
-		
+	public ResponseEntity<String> reservation(@RequestBody ReservationInfo rvInfo) {
+
 		System.out.println(rvInfo);
-		
+
 		int cnt = updateService.updateRv(rvInfo);
-		
+
 		return new ResponseEntity<String>(cnt > 0 ? "success" : "fail", HttpStatus.OK);
 	}
 }

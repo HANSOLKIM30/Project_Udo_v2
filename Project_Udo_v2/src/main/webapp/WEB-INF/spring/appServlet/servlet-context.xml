@@ -104,7 +104,7 @@
 		<!-- 한개의 인터셉터를 생성 : 로그인 체크-->
 		<interceptor>
 			<mapping path="/member/myPage/**"/>
-			<mapping path="/reservation/**"/>
+			<mapping path="/scooter/**"/>
 			<beans:ref bean="AuthCheckInterceptor"/>
 		</interceptor>
 	</interceptors>

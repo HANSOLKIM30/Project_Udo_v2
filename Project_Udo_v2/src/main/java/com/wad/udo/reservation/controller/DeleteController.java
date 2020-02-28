@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wad.udo.reservation.service.RvDeleteService;
+import com.wad.udo.reservation.service.ReservationCancleService;
 
 @Controller
-public class RvDeleteController {
+public class DeleteController {
 
 	@Autowired
-	private RvDeleteService deleteService;
+	private ReservationCancleService deleteService;
 	
 	@RequestMapping(value = "/rv/delete/{rv_idx}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> reservation(@PathVariable("rv_idx") int rv_idx){
