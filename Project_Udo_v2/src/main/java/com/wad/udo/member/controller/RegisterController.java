@@ -38,10 +38,10 @@ public class RegisterController {
 		
 		System.out.println(regInfo);	// 잘 받아왔는지 toString으로 확인
 		
-		int resultCnt = 0;	//결과값에 대한 변수
+		int result = 0;	//결과값에 대한 변수
 		
 		try {
-			resultCnt = regService.registMember(request, regInfo);
+			result = regService.registMember(request, regInfo);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,9 +53,9 @@ public class RegisterController {
 			e.printStackTrace();
 		}
 		
-		System.out.println("resultCnt::::::" + resultCnt);
+		System.out.println("result::::::" + result);
 		
-		return new ResponseEntity<String>(resultCnt > 0 ? "success" : "fail", HttpStatus.OK);
+		return new ResponseEntity<String>(result > 0 ? "success" : "fail", HttpStatus.OK);
 	}
 	
 	// id check controller

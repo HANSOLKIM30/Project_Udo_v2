@@ -93,7 +93,7 @@
 	                        </div>
 	                        <div class="card-footer">
 	                            <div class="col-md-4 text-center">
-	                                <a class="text-primary" href="<c:url value='/member/myPage/updateForm' />" style="font-size: 12px">
+	                                <a class="text-primary" href="<c:url value='/member/myPage/update' />" style="font-size: 12px">
 	                                	프로필 변경
 	                                </a>
 	                            </div>

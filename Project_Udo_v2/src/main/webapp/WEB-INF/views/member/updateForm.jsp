@@ -11,8 +11,8 @@
 		<!-- 해더 끝 -->
 		<style>
        		.input-group{
-       			margin-left: -15px;
-       			margin-top: 10px;
+       			margin-left: 20px;
+       			margin-bottom: -10px;
         	}
     	</style>
 	</head>	
@@ -25,35 +25,47 @@
 		<br>
 		<br>
 		<br>
-		<div class="page-header header-filter" style="background-image: url('../assets/img/udo1.jpg'); background-size: cover; background-position: top center;">
+		<div class="page-header header-filter" style="background-image: url('../../assets/img/udo1.jpg'); background-size: cover; background-position: top center;">
 		  <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6 ml-auto mr-auto" id="userPage">
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                     <div class="card">
-                        <form class="form" method="post" id="registerForm" enctype="multipart/form-data" onsubmit="return false">
-                            <div class="card-header card-header-primary text-center">
-                                <h4 class="card-title">SIGN UP</h4>
-                            </div>
-                            <!--card-body-->
-                            <div class="card-body" style="margin-left: 30px">
-                                
-                                <!--ID-->
-								<div class="input-group">
+                    	<div class="card-body">
+                        	<form class="form" method="post" id="updateForm" enctype="multipart/form-data" onsubmit="return false">
+                                <div class="text-center"> <!-- uPhoto -->
+                                    <c:set var="oldPhoto" value="${loginInfo.uPhoto}" />
+                                    <c:choose>
+                                        <c:when test="${empty oldPhoto}">
+                                            <img src="../../uploadFile/no_images.jpg" style="width: 150px; height: auto">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="../../uploadFile/${loginInfo.uPhoto}" style="width: 150px; height: auto">
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <div style="padding: 9px; margin-left: 40px;">
+                                        <input type="file" style="color: #868686; font-size: 10px;" name="uPhoto" id="uPhoto">
+                                    </div>
+                                    
+                                    
+                                </div> <!-- uPhoto-->
+								
+								<!--ID-->
+								<div class="input-group" style="margin-bottom: -35px;">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="material-icons">email</i>
                                         </span>
                                     </div>
                                     <div class="form-group">
-                                       <label for="uId" class="bmd-label-floating">ID</label>
-                                        <input type="text" class="form-control" id="uId" name="uId">
-                                        <input type="checkbox" id="idCheckBox_validate" style="display: none"><!--ajax를 통해 서버에서 값을 받아와야 하는 요소를 check  -->
-                                        <input type="checkbox" id="idCheckBox_overlap" style="display: none">
-                                        <span class="bmd-help" id="idCheck"></span> 
+                                        <input type="text" class="form-control" id="uId" name="uId" value="${loginInfo.uId}" required readonly>
+                                        <span id="idCheck" style="font-size: 11px; color: #F4483C;">
+                                        	<i class="material-icons" style="font-size: 11px; color: #F4483C;">error_outline</i> 
+                                        	&nbsp아이디는 수정이 불가합니다.
+                                        </span> 
                                     </div>
                                 </div>
-                                
-                                <!--PW-->
+								
+								<!--PW-->
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -68,7 +80,7 @@
                                     </div>
                                 </div>
                                 
-                                <!--Confirm PW-->
+                               <!--Confirm PW-->
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -90,9 +102,20 @@
                                         </span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="uName" class="bmd-label-floating">Name</label>
-                                        <input type="text" class="form-control" id="uName" name="uName">
-                                        <span class="bmd-help" id="nameCheck"></span>
+                                    	<c:set var = "uName" value = "${loginInfo.uName}"/>
+                                    	<c:choose>
+                                    		<c:when test="${empty uName}">
+                                    			<label for="uName" class="bmd-label-floating" >Name: 정보가 없습니다.</label>
+                                        		<input type="text" class="form-control" id="uName" name="uName">
+                                        		<span class="bmd-help" id="nameCheck"></span>
+	                                        </c:when>
+	                                        <c:otherwise>
+	                                        	<label for="uName" class="bmd-label-floating" >Name: ${loginInfo.uName}</label>
+                                        		<input type="text" class="form-control" id="uName" name="uName">
+                                        		<span class="bmd-help" id="nameCheck"></span>
+	                                        </c:otherwise>
+	                                    </c:choose>
+                                    	
                                     </div>
                                 </div>
                                 
@@ -104,106 +127,38 @@
                                         </span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="uPhone" class="bmd-label-floating">Phone ('-'필수 입력)</label>
+                                    	<c:set var = "uPhone" value = "${loginInfo.uPhone}"/>
+                                    	<label for="uPhone" class="bmd-label-floating" >Phone: ${loginInfo.uPhone}</label>
                                         <input type="text" class="form-control" id="uPhone" name="uPhone">
                                         <input type="checkbox" id="phoneCheckBox_validate" style="display: none">
                                         <input type="checkbox" id="phoneCheckBox_overlap" style="display: none">
                                         <span class="bmd-help" id="phoneCheck"></span>
                                     </div>
                                 </div>
-                                
-                                <!--Photo-->
-                                <div class="row" style="margin-top: 10px;">
-                                    <div class="col-md-2">
-                                        <span class="input-group-text">
-                                            <i class="material-icons">camera</i>
-                                        </span>
-                                    </div>
-                                    <div class="col-md-1" style="margin-left: -10px; margin-top: 10px">
-                                        <input type="file" style="color: #868686" name="uPhoto" id="uPhoto">
-                                    </div>
-                                    <span style="font-size: 11px; color: #868686; margin-top: 36px; margin-left: -15px">* 프로필 사진을 선택해주세요.</span>
-                                </div>
-                            </div><!-- /.cardbody-->
-                            
-                            <div class="text-center">
-                                <input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="SIGN UP">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
+								<div class="text-center" style="padding-top: 5px;"> <!-- submit 버튼  -->
+                                	<input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="UPDATE">
+                            	</div> <!-- submit 버튼  -->
+                        	</form>
+                        </div> <!-- cardbody  -->
+					</div> <!-- card -->
+				</div> <!-- col-lg-4... -->
+			</div> <!-- row -->
+		</div> <!-- container -->
+	</div> <!-- background -->
 	<!-- 푸터 시작 -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	<!-- 푸터 끝  -->
 	
 	<!-- 동작스크립트  -->
 	<script>
-		$(document).ready(function(){		
-			// ** 1. id 중복체크
+		$(document).ready(function(){
 			
-			// uId칸에 포커스되면 값 초기화
-			$('#uId').focus(function(){
-				$('#idCheckBox_overlap').prop('checked', false);
-				$('#idCheckBox_validate').prop('checked', false);
-				$('#idCheck').html("");
-			});
-			
-			$('#uId').focusout(function(){
-				// id의 값을 selectById 기능 통해 변수로 받아오기
-				var uId = $('#uId').val();
-				// id가 null 값인지 확인
-				if(uId == ""){	// id가 null 값이라면 span에 경고문구 띄워주기
-					$('#idCheck').css("display","block");
-					$('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
-				} else{	// id가 null 값이 아니라면,
-					// ajax를 통한 비동기 통신으로 uId 값이 데이터베이스에 존재하는지 확인
-					$.ajax({
-						url: "<c:url value='/member/register/checkId' />",
-						type: 'GET',
-						data: {
-							uId: uId
-						},
-						success: function(data){
-							console.log("id check 성공: " + data);
-
-							if(data == "exist"){	// 입력한 id가 이미 존재할 경우
-								// span block 처리
-								$('#idCheck').css("display","block");
-								// span 문구 및 css 재설정
-				                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp사용중인 아이디입니다.</p>");
-								//체크박스 처리
-				                $('#idCheckBox_overlap').prop('checked', true);
-							} else if(data == "notExist"){		// 존재하지 않을 경우
-								// span block 처리
-								$('#idCheck').css("display","block");
-								// span 문구 및 css 재설정
-				                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #4CAF50;\">done</i><p style=\"font-size: 10px; color: #4CAF50; float: right\">&nbsp사용 가능한 멋진 아이디입니다.</p>");
-							} else{	//이메일 양식을 따르지 않았을 경우
-								// span block 처리
-								$('#idCheck').css("display","block");
-								// span 문구 및 css 재설정
-				                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp이메일 형식이 아닙니다.</p>");
-				                // 체크박스 처리
-				                $('#idCheckBox_validate').prop('checked', true);
-							}
-						},
-						error: function(data){
-							console.log("에러::::::" + data);
-						}						
-					});
-					
-				}
-			});
-			
-			// ** 2. 비밀번호 유효성 검사
+			// ** 1. 비밀번호 유효성 검사
 			
 			// uPW칸에 포커스되면 값 초기화
 			$('#uPW').focus(function(){
-				$('#PWCheckBox').prop('checked', false);
 				$('#PWCheck').html("");
+				$('#PWCheckBox').prop('checked', false);
 			});
 			
 			$('#uPW').focusout(function(){				
@@ -243,7 +198,7 @@
 				}
 			});
 			
-			// ** 3. confirm PW 
+			// ** 2. confirm PW 
 			
 			// confirm_uPW칸에 포커스되면 값 초기화
 			$('#confirm_uPW').focus(function(){
@@ -251,6 +206,7 @@
 			});
 			
 			$('#confirm_uPW').focusout(function(){			
+				
 				// uPW 값 받아오기
 				var uPW = $('#uPW').val();
 				// confirm_uPW 값 받아오기
@@ -272,24 +228,19 @@
 				}
 			});
 			
-			// ** 4. phone 중복 확인 및 유효성 검사
-			
-			// uPhone칸에 포커스되면 값 초기화
-			$('#uPhone').focus(function(){
-				$('#phoneCheck').html("");
+			// ** 3. phone 중복 확인 및 유효성 검사
+			$('#uPhone').focus(function(){	
 				$('#phoneCheckBox_overlap').prop('checked', false);
 				$('#phoneCheckBox_validate').prop('checked', false);
+				$('#phoneCheck').html("");
 			});
 			
-			$('#uPhone').focusout(function(){			
+			$('#uPhone').focusout(function(){
+				
 				// uPhone 값 받아오기
 				var uPhone = $('#uPhone').val();
-				
-				if(uPhone==""){
-					$('#phoneCheck').css("display","block");
-					$('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
-				} else{	// uphone이 null 값이 아니라면,
-					// 값 비교			
+
+				if(uPhone!="" && uPhone!="<c:out value='${uPhone}' />"){
 					$.ajax({
 						url: "<c:url value='/member/register/checkPhone' />",
 						type: 'GET',
@@ -301,7 +252,7 @@
 
 							if(data == "exist"){	// 중복 검사 실패 시.
 								$('#phoneCheck').css("display","block");
-								$('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp사용 중인 번호입니다.</p>");
+								$('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">사용 중인 번호입니다.</p>");
 								// 체크박스 처리
 								$('#phoneCheckBox_overlap').prop('checked', true);
 							}else if(data == "notExist"){	// 중복, 유효성 검사 성공 시.
@@ -309,7 +260,7 @@
 								$('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #4CAF50;\">done</i><p style=\"font-size: 10px; color: #4CAF50; float: right\">&nbsp사용하셔도 좋은 번호입니다.</p>");
 							} else{	// 유효성 검사 실패 시.
 								$('#phoneCheck').css("display","block");
-				                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">유효한 형식이 아닙니다.('-'필수)</p>");
+				                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp유효한 형식이 아닙니다.('-'필수)</p>");
 				                // 체크박스 처리
 								$('#phoneCheckBox_validate').prop('checked', true);
 							}
@@ -317,62 +268,64 @@
 						error: function(data){
 							console.log("에러::::::" + data);
 						}
-					});
+					});		
 				}
 			});
 			
-			// ** 5. form 전송
-			$('#registerForm').submit(function(){
-				var uId = $('#uId').val();
+			// ** 4. form 전송
+			$('#updateForm').submit(function(){
+				
+				var uId = $('#uId').val();	//세션의 uId값 받아오기
 				var uPW = $('#uPW').val();
 				var confirm_uPW = $('#confirm_uPW').val();
 				var uName = $('#uName').val();
 				var uPhone = $('#uPhone').val();
-								
-				if(uId == ""){	// id가 null 값일 때.
-					$('#idCheck').css("display","block");
-					$('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
-				} else if(uPW == ""){	// pw null 값일 때.
+				var oldFile = "<c:out value='${oldPhoto}' />";
+					
+				if(uPW == ""){	// pw null 값일 때.
 					$('#PWCheck').css("display","block");
 					$('#PWCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
 				} else if(confirm_uPW == ""){	// pw confirm null 값일 때.
 					$('#confirmPWCheck').css("display","block");
 					$('#confirmPWCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
-				} else if(uPhone == ""){	// phone null 값일 때.
-					$('#phoneCheck').css("display","block");
-					$('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 11px; color: #F4483C;\">error_outline</i> <p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp필수 입력 사항입니다.</p>");
-				} else if($('#idCheckBox_validate').prop('checked')){	// id 유효성 검사 실패 및 형식 검사 실패
-					$('#idCheck').css("display","block");
-	                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp이메일 형식이 아닙니다.</p>");
-				} else if($('#idCheckBox_overlap').prop('checked')){
-					$('#idCheck').css("display","block");
-	                $('#idCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp사용중인 아이디입니다.</p>");
 				} else if($('#PWCheckBox').prop('checked')){	// pw 유효성 검사 실패
 					$('#PWCheck').css("display","block");
 	                $('#PWCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">8~16자, 숫자, 특수문자 포함.</p>");
 				} else if(uPW != confirm_uPW){	// confirm pw - pw 불일치
 					$('#confirmPWCheck').css("display","block");
 					$('#confirmPWCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp비밀번호가 일치하지 않습니다.</p>");
-				} else if($('#phoneCheckBox_validate').prop('checked')){	// phone 유효성 검사 실패 및 형식 검사 실패
+				} else if($('#phoneCheckBox_validate').prop('checked')){	// uPhone 값이 null이 아닐 때 진행
 					$('#phoneCheck').css("display","block");
-	                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">유효한 형식이 아닙니다.('-'필수)</p>");
+		            $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">유효한 형식이 아닙니다.('-'필수)</p>");	
 				} else if($('#phoneCheckBox_overlap').prop('checked')){
 					$('#phoneCheck').css("display","block");
-	                $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">사용 중인 번호입니다.</p>");
+		            $('#phoneCheck').html("<i class=\"material-icons\" style=\"font-size: 10px; color: #F4483C;\">clear</i><p style=\"font-size: 10px; color: #F4483C; float: right\">&nbsp사용 중인 번호입니다.</p>");	
 				} else{	//submit
-					//ajax에 담아보낼 객체 생성
+					
+					// null값 일 경우, session 값으로 입력되게 처리
+					if(uName == ""){
+						uName = "<c:out value='${loginInfo.uName}' />";
+					}
+					
+					if(uPhone == ""){
+						uPhone = "<c:out value='${loginInfo.uPhone}' />";
+					}
+					
 					var formData = new FormData();
 					var file = $('#uPhoto')[0].files[0];			
 					formData.append('uId',uId);
 					formData.append('uPW',uPW);
 					formData.append('uName',uName);
 					formData.append('uPhone',uPhone);
+					formData.append('oldFile',oldFile);
+					
 					if(file != undefined){
-						formData.append('uPhoto',file);
+						formData.append('newFile',file);
 					}
-					//비동기통신
+					
+					// 비동기통신
 					$.ajax({
-						url: "<c:url value='/member/register'/>",
+						url: "<c:url value='/member/myPage/update'/>",
 						type: 'POST',
 						data: formData,
 						enctype: 'multipart/form-data',
@@ -381,11 +334,11 @@
 						success: function(data){
 							console.log("submit 성공: " + data);
 							if(data == "success"){
-								alert("회원가입이 완료되었습니다. 이메일 인증 후 이용하시기 바랍니다.");
-								location.href = "<c:url value='/member/login' />"
+								alert("회원정보가 수정되었습니다.");
+								location.href = "<c:url value='/member/myPage' />"
 								/* myPage 이동 */
 							}else{
-								alert("회원가입에 실패하였습니다. 관리자에게 문의바랍니다.");
+								alert("수정이 실패하였습니다. 관리자에게 문의바랍니다.");
 							}
 						}, 
 						error: function(data){

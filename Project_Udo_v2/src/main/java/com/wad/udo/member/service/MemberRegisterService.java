@@ -40,7 +40,7 @@ public class MemberRegisterService {
 		MemberInfo memberInfo = regInfo.toMemberInfo();	// MemberRegisterInfo type으로 받은 객체를  memberInfo type의 객체로 변경(uPhoto 제외: 하단에서 처리) 
 		
 		
-		int resultCnt = 0;	// insert 결과 값 변수: insert 성공 시 1, 실패 시 0
+		int result = 0;	// insert 결과 값 변수: insert 성공 시 1, 실패 시 0
 		
 		// uPhoto set process
 		String path = "/uploadFile";
@@ -50,6 +50,7 @@ public class MemberRegisterService {
 		String newFileName = "";
 		
 		try {
+			
 			if(regInfo.getuPhoto() != null) {
 			
 				// user가 올린 image file name이 중복되지 않도록 새로운 file name 지정 
@@ -76,12 +77,12 @@ public class MemberRegisterService {
 		}
 		
 		// memberInfo의 uPhoto, uPW 변수까지 set하였으므로 dao에서 insert 실행
-		resultCnt = dao.insertMember(memberInfo);
+		result = dao.insertMember(memberInfo);
 		
 		// 인증 이메일 발송
 		mailService.sendVerifyMail(request, memberInfo.getuId(), memberInfo.getCode());
 		
-		return resultCnt;
+		return result;
 	}
 	
 	//id check service

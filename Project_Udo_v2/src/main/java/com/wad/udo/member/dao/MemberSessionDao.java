@@ -6,8 +6,6 @@ public interface MemberSessionDao {
 	
 	public MemberInfo selectMemberById(String uId);
 	
-	public MemberInfo selectMemberByIdx(int idx);
-	
 	public int insertMember(MemberInfo memberInfo);
 	
 	public MemberInfo selectMemberByPhone(String uPhone);
@@ -17,5 +15,7 @@ public interface MemberSessionDao {
 	public int updateTempPassword(String tempuPW, String uId);
 	
 	public int deleteMemberById(String uId);
+	
+	public int updateMember(MemberInfo memberInfo);
 
 }
