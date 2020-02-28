@@ -55,25 +55,24 @@ public class WeekInfo {
 		return "WeekInfo [year=" + year + ", month=" + month + ", date=" + date + ", day=" + day + "]";
 	}
 	
+	// JS의 Date 형식인 'YYYY-MM-DD' 형식에 맞춰 String으로 변환 후 반환
 	public String toStringDate() {
 		
 		String year = Integer.toString(this.year);
 		String month = "";
 		String date = "";
 
-		//month�? 1?��?�� 9?�� ?��, ?��?�� 0 붙여주기(js?�� Date ?��?��?�� 맞춰주기)
+		// month가 1에서 9일 때, 앞에 0 붙여주기
 		if(this.month > 0 && this.month < 11) {
 			month += "0";
 		}
-		
 		month += Integer.toString(this.month);
 		
 		
-		//date�? 1?��?�� 9?�� ?��, ?��?�� 0 붙여주기(js?�� Date ?��?��?�� 맞춰주기)
+		// date가 1에서 9일 때, 앞에 0 붙여주기(js의 Date 형식에 맞춰주기)
 		if(this.date > 0 && this.date < 11) {
 			date += "0";			
 		}
-		
 		date += Integer.toString(this.date);
 		
 		return  year + "-" + month + "-" + date;
