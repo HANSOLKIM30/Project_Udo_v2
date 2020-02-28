@@ -121,7 +121,7 @@ public class MemberInfo {
 	// MemberInfo 객체 → LoginInfo 객체 반환
 	public LoginInfo toLoginInfo() {
 
-		return new LoginInfo(uId, uName, uPhone, uPhoto);
+		return new LoginInfo(idx, uId, uName, uPhone, uPhoto);
 
 	}
 	

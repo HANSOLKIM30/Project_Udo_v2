@@ -26,16 +26,6 @@ public class MemberUpdateService {
 	@Autowired
 	private AES256Util aesUtil;
 	
-	// 입력창에 기존 변수 값 뿌려주기 위해 MemberInfo 호출
-	public MemberInfo getMemberInfo(String uId) {
-		
-		dao = template.getMapper(MemberSessionDao.class);
-		
-		MemberInfo memberInfo = dao.selectMemberById(uId);
-		
-		return memberInfo;
-	}
-	
 	// update 실행
 	public int updateMember(MultipartHttpServletRequest request, String oldFile, MemberUpdateInfo updateInfo) throws NoSuchAlgorithmException, GeneralSecurityException {
 		

@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateMember"
 		parameterType="com.wad.udo.member.domain.MemberInfo">
 
-		update member set uname=#{uName}, upw=#{uPW}, uphoto=#{uPhoto} where uid=#{uId}
+		update member set upw=#{uPW}, uname=#{uName}, uphoto=#{uPhoto} where uid=#{uId}
 
 	</update>
 	
