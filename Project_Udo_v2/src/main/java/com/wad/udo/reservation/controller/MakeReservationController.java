@@ -14,20 +14,21 @@ import com.wad.udo.reservation.domain.ReservationRegisterInfo;
 import com.wad.udo.reservation.service.ReservationService;
 
 @Controller
-@RequestMapping("scooter/reservation")
-public class ReservationController {
+@RequestMapping("reservation/makeReservation")
+public class MakeReservationController {
 
 	@Autowired
 	private ReservationService service;
 
 	// 예약 페이지 호출
-	@RequestMapping(value = "makeReservation", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String getMakeReservationForm() {
-		return "scooter/makeReservation";
+		return "reservation/makeReservation";
 	}
 	
 
-	@RequestMapping(value = "/rv/reservation/{idx}", method = RequestMethod.POST)
+	// 스쿠터 예약하기
+	@RequestMapping(value = "{idx}", method = RequestMethod.POST)
 	public ResponseEntity<String> reservation(ReservationRegisterInfo regInfo, HttpServletRequest request, @PathVariable("idx") int idx) {
 		
 		System.out.println(regInfo);

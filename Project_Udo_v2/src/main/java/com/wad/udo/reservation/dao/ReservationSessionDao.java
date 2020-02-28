@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.wad.udo.reservation.domain.ReservationInfo;
 
-public interface RvSessionDao {
+public interface ReservationSessionDao {
 
 	public int insertRv(ReservationInfo rvInfo);
 	public int updateRv(ReservationInfo rvInfo);

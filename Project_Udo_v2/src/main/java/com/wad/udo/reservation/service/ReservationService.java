@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wad.udo.reservation.dao.RvSessionDao;
+import com.wad.udo.reservation.dao.ReservationSessionDao;
 import com.wad.udo.reservation.domain.ReservationInfo;
 import com.wad.udo.reservation.domain.ReservationRegisterInfo;
 
@@ -16,11 +16,11 @@ public class ReservationService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	private RvSessionDao dao;
+	private ReservationSessionDao dao;
 	
 	public int insertRv(ReservationRegisterInfo regInfo, HttpServletRequest request, int idx) {
 		
-		dao = template.getMapper(RvSessionDao.class);
+		dao = template.getMapper(ReservationSessionDao.class);
 		
 		ReservationInfo rvInfo = regInfo.toRvInfo();
 		

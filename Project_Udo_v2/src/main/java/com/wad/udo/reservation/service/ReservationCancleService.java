@@ -4,7 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wad.udo.reservation.dao.RvSessionDao;
+import com.wad.udo.reservation.dao.ReservationSessionDao;
 
 @Service("delService")
 public class ReservationCancleService {
@@ -12,11 +12,11 @@ public class ReservationCancleService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	private RvSessionDao dao;
+	private ReservationSessionDao dao;
 	
 	public int delService(int rv_idx) {
 		
-		dao = template.getMapper(RvSessionDao.class);
+		dao = template.getMapper(ReservationSessionDao.class);
 		
 		int rCnt = dao.deleteRv(rv_idx);
 		

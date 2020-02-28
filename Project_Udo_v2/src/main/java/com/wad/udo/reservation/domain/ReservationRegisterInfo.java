@@ -2,55 +2,59 @@ package com.wad.udo.reservation.domain;
 
 public class ReservationRegisterInfo {
 
-	private String rv_date;
-	private int rv_time;
-	private int rv_bike;
-	
-	public String getRv_date() {
-		return rv_date;
-	}
-	public void setRv_date(String rv_date) {
-		this.rv_date = rv_date;
-	}
-	public int getRv_time() {
-		return rv_time;
-	}
-	public void setRv_time(int rv_time) {
-		this.rv_time = rv_time;
-	}
-	public int getRv_bike() {
-		return rv_bike;
-	}
-	public void setRv_bike(int rv_bike) {
-		this.rv_bike = rv_bike;
-	}
-	
-	
-	public ReservationRegisterInfo(String rv_date, int rv_time, int rv_bike) {
-		this.rv_date = rv_date;
-		this.rv_time = rv_time;
-		this.rv_bike = rv_bike;
-	}
-	
+	private String date;
+	private int time;
+	private int scooter;
 	
 	public ReservationRegisterInfo() {
+	}
+	
+	public ReservationRegisterInfo(String date, int time, int scooter) {
+		// idx: database에서 자동생성
+		// uId: loginInfo session에서 받아옴
+		// 클라이언트에서 받아올 항목들
+		this.date = date;
+		this.time = time;
+		this.scooter = scooter;
+	}
+	
+	// 데이터 베이스 저장 시 ReservationInfo 객체로 바꿔서 저장
+	public ReservationInfo toReservationInfo() {
+		
+		ReservationInfo reservationInfo = new ReservationInfo();
+		reservationInfo.setDate(this.date);
+		reservationInfo.setTime(this.time);
+		reservationInfo.setScooter(this.scooter);
+		
+		return reservationInfo;
+	}
 
+	public String getDate() {
+		return date;
 	}
-	
-	public ReservationInfo toRvInfo() {
-		
-		ReservationInfo rvInfo = new ReservationInfo();
-		rvInfo.setRv_date(this.rv_date);
-		rvInfo.setRv_time(this.rv_time);
-		rvInfo.setRv_bike(this.rv_bike);
-		
-		return rvInfo;
+
+	public void setDate(String date) {
+		this.date = date;
 	}
-	
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public int getScooter() {
+		return scooter;
+	}
+
+	public void setScooter(int scooter) {
+		this.scooter = scooter;
+	}
+
 	@Override
 	public String toString() {
-		return "RvRegInfo [rv_date=" + rv_date + ", rv_time=" + rv_time + ", rv_bike=" + rv_bike + "]";
+		return "ReservationRegisterInfo [date=" + date + ", time=" + time + ", scooter=" + scooter + "]";
 	}
-	
-	
 }

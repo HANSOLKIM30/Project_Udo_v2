@@ -4,38 +4,47 @@ import java.util.List;
 
 public class WeekCheckInfo {
 	
-	private List<CheckAM> chkRvAmList;
-	private List<CheckPM> chkRvPmList;
-	private List<WeekInfo> weekInfoList;
+	//클라이언트에 뿌려줄 정보
+	private List<CheckAM> checkAMReservationList;	// 오늘부터 일주일 간의 checkAM객체(오전예약)를 저장하는 List
+	private List<CheckPM> checkPMReservationList;	// 오늘부터 일주일 간의 checkPM객체(오후예약)를 저장하는 List
+	private List<WeekInfo> weekInfoList;	// 오늘부터 일주일 간의 날짜를 보여주는 객체
 	
-	public List<CheckAM> getChkRvAmList() {
-		return chkRvAmList;
+	public WeekCheckInfo() {
 	}
-	public void setChkRvAmList(List<CheckAM> chkRvAmList) {
-		this.chkRvAmList = chkRvAmList;
+	
+	public WeekCheckInfo(List<CheckAM> checkAMReservationList, List<CheckPM> checkPMReservationList, List<WeekInfo> weekInfoList) {
+		this.checkAMReservationList = checkAMReservationList;
+		this.checkPMReservationList = checkPMReservationList;
+		this.weekInfoList = weekInfoList;
 	}
-	public List<CheckPM> getChkRvPmList() {
-		return chkRvPmList;
+
+	public List<CheckAM> getCheckAMReservationList() {
+		return checkAMReservationList;
 	}
-	public void setChkRvPmList(List<CheckPM> chkRvPmList) {
-		this.chkRvPmList = chkRvPmList;
+
+	public void setCheckAMReservationList(List<CheckAM> checkAMReservationList) {
+		this.checkAMReservationList = checkAMReservationList;
 	}
+
+	public List<CheckPM> getCheckPMReservationList() {
+		return checkPMReservationList;
+	}
+
+	public void setCheckPMReservationList(List<CheckPM> checkPMReservationList) {
+		this.checkPMReservationList = checkPMReservationList;
+	}
+
 	public List<WeekInfo> getWeekInfoList() {
 		return weekInfoList;
 	}
+
 	public void setWeekInfoList(List<WeekInfo> weekInfoList) {
 		this.weekInfoList = weekInfoList;
 	}
-	
-	public WeekCheckInfo(List<CheckAM> chkRvAmList, List<CheckPM> chkRvPmList, List<WeekInfo> weekInfoList) {
-		this.chkRvAmList = chkRvAmList;
-		this.chkRvPmList = chkRvPmList;
-		this.weekInfoList = weekInfoList;
-	}
-	
-	public WeekCheckInfo() {
 
-	}
-	
-	
+	@Override
+	public String toString() {
+		return "WeekCheckInfo [checkAMReservationList=" + checkAMReservationList + ", checkPMReservationList="
+				+ checkPMReservationList + ", weekInfoList=" + weekInfoList + "]";
+	}	
 }

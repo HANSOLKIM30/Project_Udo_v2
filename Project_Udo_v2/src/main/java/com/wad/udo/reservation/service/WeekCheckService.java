@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wad.udo.reservation.dao.RvSessionDao;
+import com.wad.udo.reservation.dao.ReservationSessionDao;
 import com.wad.udo.reservation.domain.CheckAM;
 import com.wad.udo.reservation.domain.CheckPM;
 import com.wad.udo.reservation.domain.ReservationInfo;
@@ -20,7 +20,7 @@ public class WeekCheckService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	private RvSessionDao dao;
+	private ReservationSessionDao dao;
 	
 	//?��짜구?���?
 	public int calcDate(int year, int month, int date) {
@@ -151,7 +151,7 @@ public class WeekCheckService {
 	public List<CheckAM> getChkRvAm(int rv_bike){
 		System.out.println(":::::::::::::::::::::::?��?��!::::::::::::::::::::::::::::::");
 		//dao ?��?��?���?
-		dao = template.getMapper(RvSessionDao.class);
+		dao = template.getMapper(ReservationSessionDao.class);
 		
 		//받아?�� 객체 ?��?��?���?
 		List<CheckAM> chkRvAmList = new ArrayList<CheckAM>();
@@ -215,7 +215,7 @@ public class WeekCheckService {
 	public List<CheckPM> getChkRvPm(int rv_bike){
 		System.out.println(":::::::::::::::::::::::?��?��!::::::::::::::::::::::::::::::");
 		//dao ?��?��?���?
-		dao = template.getMapper(RvSessionDao.class);
+		dao = template.getMapper(ReservationSessionDao.class);
 		
 		//받아?�� 객체 ?��?��?���?
 		List<CheckPM> chkRvPmList = new ArrayList<CheckPM>();

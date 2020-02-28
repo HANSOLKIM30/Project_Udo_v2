@@ -25,7 +25,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value='/reservation/changeReservation' />"> 
+					<a class="nav-link" href="<c:url value='/reservation/myReservation' />"> 
 						<i class="material-icons">check</i> My Reservation
 					</a>
 				</li>
