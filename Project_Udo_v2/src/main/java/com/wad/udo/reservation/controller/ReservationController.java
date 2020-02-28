@@ -26,9 +26,7 @@ public class ReservationController {
 		return "scooter/makeReservation";
 	}
 	
-	
-	
-	
+
 	@RequestMapping(value = "/rv/reservation/{idx}", method = RequestMethod.POST)
 	public ResponseEntity<String> reservation(ReservationRegisterInfo regInfo, HttpServletRequest request, @PathVariable("idx") int idx) {
 		
