@@ -5,24 +5,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wad.udo.reservation.dao.ReservationSessionDao;
-import com.wad.udo.reservation.domain.ReservationInfo;
 
-@Service("rvUpdateService")
-public class ReservationChangeService {
-	
+@Service("reservationDeleteService")
+public class ReservationDeleteService {
+
 	@Autowired
 	private SqlSessionTemplate template;
 	
 	private ReservationSessionDao dao;
-
-	public int updateRv(ReservationInfo rvInfo) {
+	
+	// 예약번호를 통한 삭제
+	public int cancleReservation(int idx) {
 		
 		dao = template.getMapper(ReservationSessionDao.class);
 		
-		int rCnt = dao.updateRv(rvInfo);
+		int result = dao.deleteReservation(idx);
 		
-		System.out.println("?��?��?��?�� 결과값�? "+rCnt);
+		System.out.println("cancleReservation 결과::::::" + result);
 		
-		return rCnt;
+		return result;
 	}
 }

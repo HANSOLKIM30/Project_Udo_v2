@@ -11,7 +11,7 @@ public class ReservationRegisterInfo {
 	
 	public ReservationRegisterInfo(String date, int time, int scooter) {
 		// idx: database에서 자동생성
-		// uId: loginInfo session에서 받아옴
+		// uIdx: loginInfo session에서 받아옴
 		// 클라이언트에서 받아올 항목들
 		this.date = date;
 		this.time = time;

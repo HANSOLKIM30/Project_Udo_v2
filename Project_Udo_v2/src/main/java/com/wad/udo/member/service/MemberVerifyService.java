@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.wad.udo.member.dao.MemberSessionDao;
 import com.wad.udo.member.domain.MemberInfo;
 
-@Service("verifyService")
+@Service("memberVerifyService")
 public class MemberVerifyService {
 	
 	@Autowired

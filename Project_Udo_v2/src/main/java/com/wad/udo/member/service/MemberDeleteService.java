@@ -15,7 +15,7 @@ import com.wad.udo.member.domain.AES256Util;
 import com.wad.udo.member.domain.LoginInfo;
 import com.wad.udo.member.domain.MemberInfo;
 
-@Service("deleteService")
+@Service("memberDeleteService")
 public class MemberDeleteService {
 	
 	@Autowired

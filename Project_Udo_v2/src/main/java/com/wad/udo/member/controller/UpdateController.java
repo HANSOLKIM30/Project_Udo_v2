@@ -17,7 +17,7 @@ import com.wad.udo.member.service.MemberUpdateService;
 
 @Controller
 @RequestMapping("member/myPage/update")
-public class updateController {
+public class UpdateController {
 
 	@Autowired
 	private MemberUpdateService service;

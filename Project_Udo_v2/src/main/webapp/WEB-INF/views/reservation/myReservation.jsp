@@ -90,16 +90,9 @@
 	<!-- 푸터 끝  -->
 
 	<script>
-		$(document)
-				.ready(
-						function() {
-							var idx = sessionStorage.getItem("idx");
-							if (idx == null) {
-								alert('ë¡ê·¸ì¸ ì ì¬ì©í  ì ìë ìë¹ì¤ ìëë¤!');
-								location.href = 'loginForm.html';
-							}
-							showOnlyMyRv(idx);
-						});
+		$(document).ready(function() {
+			
+		});
 
 		//GET by idx
 		function showOnlyMyRv(idx) {
@@ -390,62 +383,6 @@
 					});
 		}
 
-		/*ìì¼ ë°ì´í°ë¥¼ ë¬¸ìë¡ ë³ê²½*/
-		function changeDay(day) {
-
-			var sDay = null;
-
-			switch (day) {
-			case 1:
-				sDay = "Sun";
-				break;
-
-			case 2:
-				sDay = "Mon";
-				break;
-
-			case 3:
-				sDay = "Tue";
-				break;
-
-			case 4:
-				sDay = "Wed";
-				break;
-
-			case 5:
-				sDay = "Thu";
-				break;
-
-			case 6:
-				sDay = "Fri";
-				break;
-
-			case 7:
-				sDay = "Sat";
-				break;
-			}
-			return sDay;
-		}
-
-		function getToday() {
-
-			var today = new Date();
-			var dd = today.getDate();
-			var mm = today.getMonth() + 1; //January is 0!
-			var yyyy = today.getFullYear();
-
-			if (dd < 10) {
-				dd = '0' + dd;
-			}
-
-			if (mm < 10) {
-				mm = '0' + mm;
-			}
-
-			today = yyyy + '-' + mm + '-' + dd;
-
-			return today;
-		}
 	</script>
 </body>
 </html>

@@ -4,50 +4,74 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wad.udo.reservation.dao.RvSessionDao">
+<mapper namespace="com.wad.udo.reservation.dao.ReservationSessionDao">
 
-<!-- Result Mapping 설정 -->
-	<resultMap id="rvInfo" type="com.wad.udo.reservation.domain.RvInfo">
-		<id property="rv_idx" column="rv_idx" />
-		<result property="idx" column="idx" />
-		<result property="rv_date" column="rv_date" />
-		<result property="rv_time" column="rv_time" />
-		<result property="rv_bike" column="rv_bike" />
+	<!-- select 결과 메핑을 위한 resultMap 설정 -->
+	<resultMap id="resultReservationInfo" type="com.wad.udo.reservation.domain.ReservationInfo">
+		<id property="idx" column="idx" />
+		<result property="uIdx" column="uidx" />
+		<result property="date" column="date" />
+		<result property="time" column="time" />
+		<result property="scooter" column="scooter" />
 	</resultMap>
 	
-<!-- 예약 생성 -->
-	<insert id="insertRv" parameterType="com.wad.udo.reservation.domain.RvInfo">
-		insert into reservation (idx, rv_date, rv_time, rv_bike) values (#{idx}, #{rv_date}, #{rv_time}, #{rv_bike})
+	<!-- 예약 생성 -->
+	<insert id="insertReservation" parameterType="com.wad.udo.reservation.domain.ReservationInfo">
+		insert into reservation (uidx, date, time, scooter) values (#{uIdx}, #{date}, #{time}, #{scooter})
 	</insert>
 
-<!-- 예약 수정 -->
-	<update id="updateRv" parameterType="com.wad.udo.reservation.domain.RvInfo">
-		update reservation set rv_date=#{rv_date}, rv_time=#{rv_time}, rv_bike=#{rv_bike} where rv_idx=#{rv_idx}
+	<!-- 예약 수정 -->
+	<update id="updateReservation" parameterType="com.wad.udo.reservation.domain.ReservationInfo">
+		update reservation set date = #{date}, time = #{time}, scooter = #{scooter} where idx = #{idx}
 	</update>
 	
-<!-- 예약 삭제 -->
-	<delete id="deleteRv">
-		delete from reservation where rv_idx = #{rv_idx}
+	<!-- 예약 삭제 -->
+	<delete id="deleteReservation">
+	
+		delete from reservation where idx = #{Idx}
+		
 	</delete>
 
-<!-- 바이크에 대한 오전예약 정보 보여주기(일주일 단위) -->
-	<select id="selectListByBikeAm" resultMap="rvInfo">
-		select * from reservation where rv_bike = #{param1} and rv_time=2 and rv_date between #{param2} and #{param3} order by rv_date ASC;
+	<!-- 바이크의 오전예약 정보 보여주기(일주일 단위 / 날짜순 정렬) -->
+	<select id="selectAMReservation" resultMap="resultReservationInfo">
+	
+		select * from reservation where scooter = #{param1} and time = 2 and date between #{param2} and #{param3} order by date ASC;
+		
 	</select>
 
-<!-- 바이크에 대한 오후예약 정보 보여주기(일주일 단위) -->
-	<select id="selectListByBikePm" resultMap="rvInfo">
-		select * from reservation where rv_bike = #{param1} and rv_time=3 and rv_date between #{param2} and #{param3} order by rv_date ASC;
+	<!-- 바이크의 오후예약 정보 보여주기(일주일 단위 / 날짜순 정렬) -->
+	<select id="selectPMReservation" resultMap="resultReservationInfo">
+	
+		select * from reservation where scooter = #{param1} and time =3  and date between #{param2} and #{param3} order by date ASC;
+	
 	</select>
 	
-<!--id를 통한 예약정보 보여주기  -->
-	<select id="selectListByIdx" resultMap="rvInfo">
-		select * from reservation where idx = #{idx} order by rv_date ASC;
+	<!--uIdx를 통한 특정 회원의 예약정보 보여주기 (날짜순 정렬) -->
+	<select id="selectListByUIdx" resultMap="resultReservationInfo">
+	
+		select * from reservation where uidx = #{uIdx} order by date ASC;
+		
+	</select>
+	
+	<!--uIdx를 통한 특정 회원의 일주일 간 예약정보 보여주기 (날짜순 정렬) -->
+	<select id="selectWeekListByUIdx" resultMap="resultReservationInfo">
+	
+		select * from reservation where uidx = #{uIdx} and date between #{param1} and #{param2} order by date ASC;
+		
 	</select>
 
-<!--전체 예약정보 보여주기  -->
-	<select id="selectList" resultMap="rvInfo">
-		select * from reservation order by rv_date ASC;
+	<!--전체 예약정보 보여주기(날짜순 정렬)  -->
+	<select id="selectList" resultMap="resultReservationInfo">
+	
+		select * from reservation order by date ASC;
+		
+	</select>
+	
+	<!--일주일 간의 예약정보 보여주기(날짜순 정렬)  -->
+	<select id="selectWeekList" resultMap="resultReservationInfo">
+	
+		select * from reservation where date between #{param1} and #{param2} order by date ASC;
+		
 	</select>
 	
 </mapper>

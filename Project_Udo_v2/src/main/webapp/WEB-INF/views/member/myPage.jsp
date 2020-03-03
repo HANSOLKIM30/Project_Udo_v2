@@ -78,17 +78,6 @@
 	                                        <div class="col-md-10" id=uPhone>${loginInfo.uPhone}</div>
 	                                    </div>
 	                                </div>
-	                                
-	                                <!--예약정보-->
-	                                <br>
-	                                <div class="col-lg-12 col-md-6 ml-auto mr-auto">
-	                                    <div class="row">
-	                                        <div class="col-md-2">
-	                                            <i class="material-icons">assignment_turned_in</i>
-	                                        </div>
-	                                        <div class="col-md-10">예약정보 입력란</div>
-	                                    </div>
-	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="card-footer">

@@ -18,7 +18,7 @@ import com.wad.udo.member.domain.AES256Util;
 import com.wad.udo.member.domain.MemberInfo;
 import com.wad.udo.member.domain.MemberRegisterInfo;
 
-@Service("registerService")
+@Service("memberRegisterService")
 public class MemberRegisterService {
 
 	@Autowired

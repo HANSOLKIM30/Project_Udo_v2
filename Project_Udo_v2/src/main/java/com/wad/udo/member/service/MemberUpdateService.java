@@ -15,7 +15,7 @@ import com.wad.udo.member.domain.AES256Util;
 import com.wad.udo.member.domain.MemberInfo;
 import com.wad.udo.member.domain.MemberUpdateInfo;
 
-@Service("updateService")
+@Service("memberUpdateService")
 public class MemberUpdateService {
 
 	@Autowired
