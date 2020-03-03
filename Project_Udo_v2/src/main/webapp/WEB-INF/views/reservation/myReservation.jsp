@@ -13,7 +13,7 @@
 	   <!-- 네비게이션 시작 -->
 		<%@ include file="/WEB-INF/views/frame/navigation.jsp"%>
 		<!-- 네비게이션 끝  -->
-	    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../../assets/img/udo3.jpg')">
+	    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/udo3.jpg')">
 	        <div class="container">
 	            <div class="row">
 	                <div class="col-md-6">
@@ -95,293 +95,43 @@
 		});
 
 		//GET by idx
-		function showOnlyMyRv(idx) {
-			var html = '';
-			html += '<table class="table" style="text-align: center; font-size: 18px;">';
-			html += '<thead class="thead-dark">';
-			html += '<tr>';
-			html += '<th>ìì½ë²í¸</th>';
-			html += '<th>ìì´ë</th>';
-			html += '<th>ì¤ì¿ í°</th>';
-			html += '<th>ìì½ì¼ì</th>';
-			html += '<th>ì¤ì /ì¤í</th>';
-			html += '<th>ìì /ì­ì </th>';
-			html += '</tr>';
-			html += '</thead>'
+		function showMyReservation() {
 
-			$
-					.ajax({
-						url : 'http://ec2-13-209-6-70.ap-northeast-2.compute.amazonaws.com:8080/Project_Udo/rv/list/myRvList/'
-								+ idx,
-						type : 'GET',
-						success : function(data) {
+			$.ajax({
+				url : ''+ idx,
+				type : 'GET',
+				success : function(data) {
 
-							if (data == '') {
-								html += '<tr>';
-								html += '<td colspan=\'6\' style="font-size: 20px; color: crimson;">ìì½ë ì¤ì¿ í°ê° ììµëë¤!!</td>';
-								html += '</tr>';
-							}
+				},
 
-							var today = getToday();
-
-							for (var i = 0; i < data.length; i++) {
-								var rv_idx = data[i].rv_idx;
-								var idx = data[i].idx;
-								var rv_bike = data[i].rv_bike;
-								var rv_date = data[i].rv_date;
-								var rv_time = data[i].rv_time;
-
-								if (rv_date < today) {
-
-									var str_rv_time = "";
-									switch (rv_time) {
-									case 2:
-										str_rv_time = 'ì¤ì ';
-										break;
-									case 3:
-										str_rv_time = 'ì¤í';
-										break;
-									}
-									html += '<tr>';
-									html += '<td>' + rv_idx + '</td>';
-									html += '<td>' + idx + '</td>';
-									html += '<td>' + rv_bike
-											+ 'ë² ì¤ì¿ í°</td>';
-									html += '<td>' + rv_date + '</td>';
-									html += '<td>' + str_rv_time + '</td>';
-									html += '<td>ì§ë ìì½ìëë¤!</td>';
-									html += '</tr>';
-								} else {
-									var str_rv_time = "";
-									switch (rv_time) {
-									case 2:
-										str_rv_time = 'ì¤ì ';
-										break;
-									case 3:
-										str_rv_time = 'ì¤í';
-										break;
-									}
-									html += '<tr>';
-									html += '<td>' + rv_idx + '</td>';
-									html += '<td>' + idx + '</td>';
-									html += '<td>' + rv_bike
-											+ 'ë² ì¤ì¿ í°</td>';
-									html += '<td>' + rv_date + '</td>';
-									html += '<td>' + str_rv_time + '</td>';
-									html += '<td>';
-									html += '<button class="btn btn-primary btn-sm" onclick=\"showAllRv('
-											+ idx
-											+ ')\">ìì </button> &nbsp;';
-									html += '<button class="btn btn-primary btn-sm" onclick=\"del('
-											+ rv_idx + ')\">ì­ì </button>';
-									html += '</td>';
-									html += '</tr>';
-								}
-							}
-							html += '</table>';
-							$('#myReservation').html(html);
-						},
-
-						error : function(e) {
-							alert("error!");
-						}
-					});
+				error : function() {
+							
+				}
+			});
 		}
 
-		function update(rv_date, bike, rv_time, rv_idx, idx) {
-
-			$
-					.ajax({
-						url : 'http://ec2-13-209-6-70.ap-northeast-2.compute.amazonaws.com:8080/Project_Udo/rv/reservation',
-						type : 'PUT',
-						data : JSON.stringify({
-							rv_idx : rv_idx,
-							idx : idx,
-							rv_date : rv_date,
-							rv_time : rv_time,
-							rv_bike : bike
-						}),
-						contentType : 'application/json; charset=utf-8',
-						success : function(data) {
-
-							if (data == "success") {
-								alert('ìì ëììµëë¤.');
-								location.reload();
-							}
-						},
-						error : function(e) {
-							alert('error!');
-						}
-					});
-		}
+	
 
 		/*DELETE*/
-		function del(rv_idx) {
+		function delelteMyReservation(idx) {
 
-			var result = confirm('ì­ì íìê² ìµëê¹?');
+			var result = confirm('');
 
 			if (result) {
-				$
-						.ajax({
-							url : 'http://ec2-13-209-6-70.ap-northeast-2.compute.amazonaws.com:8080/Project_Udo/rv/delete/'
-									+ rv_idx,
-							type : 'DELETE',
-							success : function(data) {
-								if (data == "success") {
-									alert('ì­ì ëììµëë¤.');
-								}
-							},
-							error : function(e) {
-								alert('error!');
-							}
-						});
-			} else {
-				alert('ì·¨ìëììµëë¤!');
-			}
+				$.ajax({
+					url : '' + idx,
+					type : 'DELETE',
+					success : function(data) {
+								
+					},
+					error : function() {
+						
+					}
+				});
+			} 
 			location.reload();
 		}
 
-		/*GET by rv_bike*/
-		function showAllRv(idx) {
-			$
-					.ajax({
-						url : 'http://ec2-13-209-6-70.ap-northeast-2.compute.amazonaws.com:8080/Project_Udo/rv/list/myRvList/'
-								+ idx,
-						type : 'GET',
-						success : function(mydata) {
-
-							for (var m = 0; m < mydata.length; m++) {
-								var rv_idx = mydata[m].rv_idx;
-								var idx = mydata[m].idx;
-								var rv_date = mydata[m].rv_date;
-								var rv_time = mydata[m].rv_time;
-								var bike = mydata[m].rv_bike;
-								timeTable(rv_idx, idx, rv_date, rv_time, bike);
-							}
-						}
-					});
-		}
-
-		function timeTable(rv_idx, idx, rv_date, rv_time, bike) {
-			$
-					.ajax({
-						url : 'http://ec2-13-209-6-70.ap-northeast-2.compute.amazonaws.com:8080/Project_Udo/rv/weekChk/'
-								+ bike,
-						type : 'GET',
-						success : function(data) {
-
-							var weekInfoList = data.weekInfoList;
-							var chkRvAmList = data.chkRvAmList;
-							var chkRvPmList = data.chkRvPmList;
-
-							var html = '';
-
-							for (var i = 0; i < 3; i++) {
-
-								if (i == 0) {
-									html += '<tr style="text-align: center;">';
-									for (var j = 0; j < weekInfoList.length; j++) {
-										html += '<td style="font-size: 16px;">';
-										html += weekInfoList[j].month + '.';
-										html += weekInfoList[j].date + '.';
-										html += changeDay(weekInfoList[j].day);
-										html += '</td>';
-									}
-									html += '</tr>';
-								} else if (i == 1) {
-									html += '<tr>';
-
-									for (var j = 0; j < weekInfoList.length; j++) {
-
-										var new_rv_date = weekInfoList[j].year
-												+ '-' + weekInfoList[j].month
-												+ '-' + weekInfoList[j].date;
-										var new_rv_time = 2;
-
-										html += '<td>';
-
-										if (chkRvAmList[j].chkRvAm == true) {
-											html += '<button class="btn btn-light" onclick=\"update(\''
-													+ new_rv_date
-													+ '\','
-													+ bike
-													+ ','
-													+ new_rv_time
-													+ ','
-													+ rv_idx
-													+ ','
-													+ idx
-													+ ')\">ìì½ìì </button>';
-										} else {
-											var myidx = sessionStorage
-													.getItem("idx");
-											if (idx == myidx) {
-												html += '<p style="font-size: 13px; color: crimson; text-align: center; padding-top:10px;">ëì ìì½</p>';
-											} else {
-												html += '<p style="font-size: 13px; color: crimson; text-align: center; padding-top:10px;">ìì½ìë£</p>';
-											}
-										}
-										html += '</td>';
-									}
-									html += '</tr>';
-								} else if (i == 2) {
-									html += '<tr>';
-									for (var j = 0; j < weekInfoList.length; j++) {
-
-										var new_rv_date = weekInfoList[j].year
-												+ '-' + weekInfoList[j].month
-												+ '-' + weekInfoList[j].date;
-										var new_rv_time = 3;
-
-										html += '<td>';
-
-										if (chkRvPmList[j].chkRvPm == true) {
-											html += '<button class="btn btn-light" onclick=\"update(\''
-													+ new_rv_date
-													+ '\','
-													+ bike
-													+ ','
-													+ new_rv_time
-													+ ','
-													+ rv_idx
-													+ ','
-													+ idx
-													+ ')\">ìì½ìì </button>';
-										} else {
-											var myidx = sessionStorage
-													.getItem("idx");
-											if (idx == myidx) {
-												html += '<p style="font-size: 13px; color: crimson; text-align: center; padding-top:10px;">ëì ìì½</p>';
-											} else {
-												html += '<p style="font-size: 13px; color: crimson; text-align: center; padding-top:10px;">ìì½ìë£</p>';
-											}
-										}
-										html += '</td>';
-									}
-								}
-
-								html += '</tr>';
-								if (bike == 1) {
-									$('#bikeTimeTable1').html(html);
-									$('#bike1').css('display', 'block');
-								}
-								if (bike == 2) {
-									$('#bikeTimeTable2').html(html);
-									$('#bike2').css('display', 'block');
-								}
-								if (bike == 3) {
-									$('#bikeTimeTable3').html(html);
-									$('#bike3').css('display', 'block');
-								}
-							}
-						},
-
-						error : function(e) {
-							alert('error!')
-						}
-
-					});
-		}
 
 	</script>
 </body>

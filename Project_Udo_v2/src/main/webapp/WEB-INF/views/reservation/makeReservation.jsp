@@ -364,8 +364,9 @@
 		
 		// 선택한 스쿠터에 대한 현재 예약상황
 		function showWeekInformation(scooter) {
+				
 			$.ajax({
-				url : '/udo/reservation/weekInfomation/' + scooter,
+				url : "<c:url value='/reservation/weekInfomation' />" + "/" + scooter,
 				type : 'GET',
 				success : function(data) {
 					
@@ -444,7 +445,7 @@
 			var result = confirm(month+ "월 " + date + "일 " + AMPM +"에 예약하시겠습니까?");
 			if(result) {
 				$.ajax({
-					url : '/udo/reservation/makeReservation',
+					url : "<c:url value='/reservation/makeReservation' />",
 					type : 'POST',
 					data: {
 						date: reservationDate,
