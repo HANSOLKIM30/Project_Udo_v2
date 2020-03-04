@@ -59,19 +59,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from reservation where uidx = #{uIdx} and date between #{param1} and #{param2} order by date ASC;
 		
 	</select>
-
-	<!--전체 예약정보 보여주기(날짜순 정렬)  -->
-	<select id="selectList" resultMap="resultReservationInfo">
-	
-		select * from reservation order by date ASC;
-		
-	</select>
-	
-	<!--일주일 간의 예약정보 보여주기(날짜순 정렬)  -->
-	<select id="selectWeekList" resultMap="resultReservationInfo">
-	
-		select * from reservation where date between #{param1} and #{param2} order by date ASC;
-		
-	</select>
-	
 </mapper>

@@ -7,10 +7,10 @@
 		<div class="navbar-translate">
 			<a class="navbar-brand" href="/udo"> 
 				<i class='fas fa-water fa-2x'>
-					<p style="text-align: center">UDO</p>
+					<p style='text-align: center'>UDO</p>
 				</i>
 			</a>
-			</div>
+		</div>
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav nav-pills nav-pills-primary ml-auto">

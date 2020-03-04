@@ -20,7 +20,6 @@ public class ReservationListService {
 
 	private ReservationSessionDao dao;
 
-
 	// 회원별 리스트 출력
 	public List<ReservationInfo> showMyReservation(HttpSession session) {
 
@@ -29,6 +28,8 @@ public class ReservationListService {
 		// 스쿠터를 예약한 회원의 uIdx는 세션에서 받아오기
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		int uIdx = loginInfo.getIdx();
+		
+		System.out.println("예약 회원 uIdx::::::" + uIdx);
 		
 		List<ReservationInfo> list = dao.selectListByUIdx(uIdx);
 

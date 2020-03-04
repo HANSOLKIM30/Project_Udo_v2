@@ -109,7 +109,7 @@
                                 <p><i class="fas fa-check"> 예약서비스는 금일부터 일주일 단위로 이루어집니다.</i></p>
                             </div>
                         </div>
-                        <div class="description text-center">
+                        <div class="description">
                             <p><i class="fas fa-check"> 대여시간은 오전과 오후로 나뉘어집니다. (6시간 기준)</i> </p>
                         </div>
                     </div>

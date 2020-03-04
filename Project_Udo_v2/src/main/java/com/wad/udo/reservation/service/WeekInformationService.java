@@ -120,7 +120,7 @@ public class WeekInformationService {
 		}
 		return year;
 	}
-	
+
 	// 위에서  정의한 메서드 대로  년, 월, 일, 요일을 일주일 단위로 계산해 listWeekDate객체에 담아 반환: listWeekDate 내  weekDate 객체 7개
 	public List<WeekDate> getWeekInfo() {
 		
