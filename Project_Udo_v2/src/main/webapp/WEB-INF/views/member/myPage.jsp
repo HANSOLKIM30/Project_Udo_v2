@@ -30,10 +30,10 @@
 		                            <c:set var = "uPhoto" value = "${loginInfo.uPhoto}" />
 			                         <c:choose>
 			                          	<c:when test="${empty uPhoto}">
-			                           		<img src="../uploadFile/no_images.jpg" style="width: 150px; height: auto">
+			                           		<img src="../uploadFile/no_images.jpg" style="width: 150px; height: 160px">
 			                           	</c:when>
 			                           	<c:otherwise>
-			                           		<img src="../uploadFile/${loginInfo.uPhoto}" style="width: 150px; height: auto">
+			                           		<img src="../uploadFile/${loginInfo.uPhoto}" style="width: 150px; height: 160px">
 			                           	</c:otherwise>
 			                            </c:choose>                                
 		                        </div>

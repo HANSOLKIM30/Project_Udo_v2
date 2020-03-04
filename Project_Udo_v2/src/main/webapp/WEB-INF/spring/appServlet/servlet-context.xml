@@ -32,9 +32,9 @@
 	<beans:bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource"
 		p:driverClassName="com.mysql.cj.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/udo?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC"
-		p:username="root" 
-		p:password="admin" />
+		p:url="jdbc:mysql://udo.cxnvsgawg81o.ap-northeast-2.rds.amazonaws.com/udo?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC"
+		p:username="admin" 
+		p:password="Khanso0426!" />
 
 	<beans:bean id="jdbcTemplate"
 		class="org.springframework.jdbc.core.JdbcTemplate"
