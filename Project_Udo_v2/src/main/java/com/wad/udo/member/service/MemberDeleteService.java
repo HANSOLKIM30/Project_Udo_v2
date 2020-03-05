@@ -14,6 +14,7 @@ import com.wad.udo.member.dao.MemberSessionDao;
 import com.wad.udo.member.domain.AES256Util;
 import com.wad.udo.member.domain.LoginInfo;
 import com.wad.udo.member.domain.MemberInfo;
+import com.wad.udo.reservation.service.ReservationDeleteService;
 
 @Service("memberDeleteService")
 public class MemberDeleteService {
@@ -26,12 +27,15 @@ public class MemberDeleteService {
 	@Autowired
 	private AES256Util aesUtil;
 	
+	@Autowired
+	private ReservationDeleteService reservationDeleteService;
+	
 	// 회원탈퇴
 	public int signOut(HttpSession session, String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
 		dao = template.getMapper(MemberSessionDao.class);
 		
-		int result = 0;
+		int memberDeleteResult = 0;
 
 		// 세션에서 로그인 정보 받아오기
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
@@ -50,17 +54,22 @@ public class MemberDeleteService {
 			// 복호화값이 있고, 입력한 비밀번호와 복호화한 비밀번호가 일치한다면, 
 			if(decryptuPW != null && decryptuPW.trim().length()>0 && decryptuPW.equals(uPW)) {
 				
-				// 데이터베이스에서 삭제 → 회원탈퇴
-				result = dao.deleteMemberById(memberInfo.getuId());
-				// 세션 무효화
-				session.invalidate();
+				// 데이터베이스에서 예약한 스쿠터 삭제 → 회원탈퇴
+				int reservationDeleteResult = reservationDeleteService.deleteAllReservation(session);
+				System.out.println("회원탈퇴 시 예약한 스쿠터 삭제 결과값::::::" + reservationDeleteResult);
+				
+				if(reservationDeleteResult > 0) {
+					memberDeleteResult = dao.deleteMemberById(memberInfo.getuId());
+					// 세션 무효화
+					session.invalidate();
+				}	
 			}
 		}
 		
 		// 결과값 출력
-		System.out.println("삭제결과::::::" + result);
+		System.out.println("삭제결과::::::" + memberDeleteResult);
 		
-		return result;
+		return memberDeleteResult;
 	}
 
 }

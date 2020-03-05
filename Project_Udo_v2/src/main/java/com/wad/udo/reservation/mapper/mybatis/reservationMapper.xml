@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 예약 삭제 -->
 	<delete id="deleteReservation">
 	
-		delete from reservation where idx = #{Idx}
+		delete from reservation where idx = #{idx}
 		
 	</delete>
 
@@ -59,4 +59,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from reservation where uidx = #{uIdx} and date between #{param1} and #{param2} order by date ASC;
 		
 	</select>
+	
+	<!-- 회원 탈퇴 시 기존 예약 모두 삭제 -->
+	<delete id="deleteAllReservation">
+	
+		delete from reservation where uidx = #{uIdx}
+		
+	</delete>
 </mapper>

@@ -21,7 +21,7 @@ import com.wad.udo.member.service.MemberDeleteService;
 public class DeleteController {
 
 	@Autowired
-	private MemberDeleteService service;
+	private MemberDeleteService memberDeleteService;
 	
 	// 회원탈퇴 폼(비밀번호 입력으로 재확인) 불러오기
 	@RequestMapping(method = RequestMethod.GET)
@@ -36,9 +36,10 @@ public class DeleteController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> DeleteMember(HttpSession session, @RequestParam("uPW") String uPW) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		
-		int result = service.signOut(session, uPW);
+		int result = memberDeleteService.signOut(session, uPW);
 		
-		System.out.println("삭제 결과값::::::" + result);
+		System.out.println("회원탈퇴 시 예약한 스쿠터 삭제 결과값::::::" + result);
+		System.out.println("회원탈퇴 결과값::::::" + result);
 		
 		return new ResponseEntity<String>(result > 0 ? "success" : "fail", HttpStatus.OK);
 	}

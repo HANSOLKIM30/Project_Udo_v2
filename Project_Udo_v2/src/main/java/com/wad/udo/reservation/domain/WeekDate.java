@@ -22,7 +22,7 @@ public class WeekDate {
 	public void setMonth(int month) {
 		this.month = "";
 		// month가 1에서 9일 때, 앞에 0 붙여주기
-		if(month > 0 && month < 11) {
+		if(month > 0 && month < 10) {
 			this.month += "0";
 		}
 			this.month += Integer.toString(month);
@@ -35,7 +35,7 @@ public class WeekDate {
 	public void setDate(int date) {
 		this.date = "";
 		// date가 1에서 9일 때, 앞에 0 붙여주기(js의 Date 형식에 맞춰주기)
-		if(date > 0 && date < 11) {
+		if(date > 0 && date < 10) {
 			this.date += "0";			
 		}
 		this.date += Integer.toString(date);

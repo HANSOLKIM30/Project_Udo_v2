@@ -20,4 +20,6 @@ public interface ReservationSessionDao {
 	public List<ReservationInfo> selectListByUIdx(int uIdx);
 	// 일주일 간의 예약정보 보여주기(회원)
 	public List<ReservationInfo> selectWeekListByUIdx(String startWeekDate, String endWeekDate);
+	// 회원탈퇴 시 모든 예약 삭제
+	public int deleteAllReservation(int uIdx);
 }
