@@ -1,5 +1,4 @@
 # Auto detect text file and perform LF normalization
 * text=auto
 * linguist-vendored
-*.js linguist-vendored=false
-*.css linguist-vendored=false
+*.java linguist-vendored=false
